@@ -6,6 +6,7 @@
  *   2. Copy-to-clipboard buttons (CodeBlock)
  *   3. Mobile hamburger drawer toggle (NavBar)
  *   4. GitHub star count fetch (NavBar)
+ *   5. Lightweight first-party analytics events
  *
  * Loaded deferred at end of <body>. No framework. No dependencies.
  * Estimated < 3KB gzipped.
@@ -73,7 +74,79 @@ function initInstallPanels(): void {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Copy-to-Clipboard Buttons
+// 2. Lightweight Analytics Events
+// ---------------------------------------------------------------------------
+
+interface AnalyticsPayload {
+  event: string;
+  properties: Record<string, string>;
+}
+
+function getAnalyticsPayload(el: HTMLElement): AnalyticsPayload | null {
+  const event = el.dataset.analyticsEvent;
+  if (!event) return null;
+
+  const properties: Record<string, string> = {};
+  Object.entries(el.dataset).forEach(([key, value]) => {
+    if (!value || !key.startsWith('analytics') || key === 'analyticsEvent') return;
+
+    const propertyName = key
+      .replace(/^analytics/, '')
+      .replace(/^[A-Z]/, (match) => match.toLowerCase())
+      .replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
+
+    properties[propertyName] = value;
+  });
+
+  return { event, properties };
+}
+
+function emitAnalyticsEvent(el: HTMLElement, extra: Record<string, string> = {}): void {
+  const payload = getAnalyticsPayload(el);
+  if (!payload) return;
+
+  const detail: AnalyticsPayload = {
+    event: payload.event,
+    properties: {
+      ...payload.properties,
+      ...extra,
+    },
+  };
+
+  window.dispatchEvent(new CustomEvent('cyoda:analytics', { detail }));
+}
+
+function initAnalyticsEvents(): void {
+  document
+    .querySelectorAll<HTMLElement>('a[data-analytics-event], button[data-analytics-event]')
+    .forEach((el) => {
+      if (el.classList.contains('code-block__copy')) return;
+      el.addEventListener('click', () => emitAnalyticsEvent(el));
+    });
+
+  document
+    .querySelectorAll<HTMLElement>('[data-analytics-event$="_view"]')
+    .forEach((el) => {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              emitAnalyticsEvent(el);
+              observer.disconnect();
+            });
+          },
+          { threshold: 0.35 },
+        );
+        observer.observe(el);
+      } else {
+        emitAnalyticsEvent(el);
+      }
+    });
+}
+
+// ---------------------------------------------------------------------------
+// 3. Copy-to-Clipboard Buttons
 // ---------------------------------------------------------------------------
 
 function initCopyButtons(): void {
@@ -90,6 +163,7 @@ function initCopyButtons(): void {
         btn.classList.add('code-block__copy--success');
 
         if (liveRegion) liveRegion.textContent = 'Code copied to clipboard.';
+        emitAnalyticsEvent(btn);
 
         setTimeout(() => {
           btn.textContent = 'Copy';
@@ -107,7 +181,7 @@ function initCopyButtons(): void {
 }
 
 // ---------------------------------------------------------------------------
-// 3. Mobile Hamburger Drawer
+// 4. Mobile Hamburger Drawer
 // ---------------------------------------------------------------------------
 
 function initHamburger(): void {
@@ -140,7 +214,7 @@ function initHamburger(): void {
 }
 
 // ---------------------------------------------------------------------------
-// 4. GitHub Star Count
+// 5. GitHub Star Count
 // ---------------------------------------------------------------------------
 
 async function fetchGitHubStars(): Promise<void> {
@@ -199,6 +273,7 @@ function formatStars(n: number): string {
 
 document.addEventListener('DOMContentLoaded', () => {
   initInstallPanels();
+  initAnalyticsEvents();
   initCopyButtons();
   initHamburger();
   fetchGitHubStars().catch(() => {});

@@ -6,6 +6,7 @@ import CodeBlock from './CodeBlock.astro';
 import HelloWorldWorkflowViewer from './HelloWorldWorkflowViewer';
 import { site } from '../data/site';
 import { firstEntityCommands } from '../data/install';
+import { developerConsoleRelease } from '../data/developerConsole';
 ---
 
 <section
@@ -48,6 +49,40 @@ import { firstEntityCommands } from '../data/install';
             deployment options, and API reference.
           </li>
         </ol>
+
+        <div class="quickstart__optional">
+          <h3>Optional: install Cyoda Developer Console</h3>
+          <p>
+            Cyoda Developer Console is an early-preview desktop companion for
+            visually inspecting and editing workflows. It is optional and
+            currently available for macOS Apple Silicon.
+          </p>
+          <CodeBlock
+            code={developerConsoleRelease.brewCommand}
+            language="bash"
+            label="cyoda-dev-console.sh"
+            analyticsEvent="dev_console_brew_copy"
+            analyticsSource="docs"
+            analyticsVersion="0.1.0"
+            analyticsPlatform="macos_apple_silicon"
+            analyticsAsset="brew"
+          />
+          <a
+            href={developerConsoleRelease.dmgUrl}
+            class="quickstart__link"
+            aria-label="Download the v0.1.0 Apple Silicon DMG for Cyoda Developer Console"
+            data-analytics-event="dev_console_dmg_download_click"
+            data-analytics-source="docs"
+            data-analytics-version="0.1.0"
+            data-analytics-platform="macos_apple_silicon"
+            data-analytics-asset="dmg"
+          >
+            &rarr; Download the v0.1.0 Apple Silicon DMG
+          </a>
+          <a href={developerConsoleRelease.pagePath} class="quickstart__link">
+            &rarr; Learn more about Developer Console
+          </a>
+        </div>
 
         <a
           href={site.docsQuickstart}

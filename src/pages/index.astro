@@ -23,6 +23,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ProofBar from '../components/ProofBar.astro';
 import AgentInstallTabs from '../components/AgentInstallTabs.astro';
+import DeveloperConsolePreview from '../components/DeveloperConsolePreview.astro';
 import WhatItIs from '../components/WhatItIs.astro';
 import QuickStart from '../components/QuickStart.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
@@ -44,13 +45,16 @@ import { features } from '../data/features';
   <!-- 4. AI coding agent install paths -->
   <AgentInstallTabs />
 
-  <!-- 5. What it is -->
+  <!-- 5. Developer Console preview -->
+  <DeveloperConsolePreview />
+
+  <!-- 6. What it is -->
   <WhatItIs />
 
-  <!-- 6. Install and get started -->
+  <!-- 7. Install and get started -->
   <QuickStart />
 
-  <!-- 7. Key capabilities -->
+  <!-- 8. Key capabilities -->
   <section
     class="section"
     id="capabilities"
@@ -62,15 +66,15 @@ import { features } from '../data/features';
     </div>
   </section>
 
-  <!-- 8. Growth path — runtime mode progression -->
+  <!-- 9. Growth path — runtime mode progression -->
   <GrowthPath />
 
-  <!-- 9. Three ways to use Cyoda -->
+  <!-- 10. Three ways to use Cyoda -->
   <ProgressionDiagram />
 
-  <!-- 10. FAQ -->
+  <!-- 11. FAQ -->
   <FAQSection />
 
-  <!-- 11. Final CTA -->
+  <!-- 12. Final CTA -->
   <FinalCTA />
 </BaseLayout>

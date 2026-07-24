@@ -1,0 +1,50 @@
+---
+import { developerConsoleRelease } from '../data/developerConsole';
+
+interface Props {
+  label: string;
+  description: string;
+  variant?: 'compact' | 'wide';
+}
+
+const { label, description, variant = 'wide' } = Astro.props;
+---
+
+<figure
+  class:list={[
+    'dev-console-media',
+    variant === 'compact' && 'dev-console-media--compact',
+  ]}
+  data-expected-poster={developerConsoleRelease.media.poster}
+  data-expected-video-webm={developerConsoleRelease.media.demoWebm}
+  data-expected-video-mp4={developerConsoleRelease.media.demoMp4}
+>
+  <!-- Replace this placeholder with real v0.1.0 screenshots/video before final launch. -->
+  <div
+    class="dev-console-media__placeholder"
+    role="img"
+    aria-label="Cyoda Developer Console displaying a workflow graph with states and transitions."
+  >
+    <div class="dev-console-media__chrome" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="dev-console-media__canvas" aria-hidden="true">
+      <div class="dev-console-media__node dev-console-media__node--draft">draft</div>
+      <div class="dev-console-media__line dev-console-media__line--one"></div>
+      <div class="dev-console-media__node dev-console-media__node--review">review</div>
+      <div class="dev-console-media__line dev-console-media__line--two"></div>
+      <div class="dev-console-media__node dev-console-media__node--done">approved</div>
+      <div class="dev-console-media__panel">
+        <span>criteria</span>
+        <span>processors</span>
+        <span>source</span>
+      </div>
+    </div>
+    <figcaption class="dev-console-media__caption">
+      <strong>{label}</strong>
+      <span>{description}</span>
+    </figcaption>
+  </div>
+</figure>

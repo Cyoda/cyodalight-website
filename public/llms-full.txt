@@ -61,6 +61,23 @@ cyoda
 # Local default auth is mock auth; no bearer token required.
 ```
 
+### Optional: Cyoda Developer Console
+
+Cyoda Developer Console is an early-preview desktop companion for visually
+inspecting and editing workflows. It is optional and currently available for
+macOS Apple Silicon.
+
+Install it after installing and starting the Cyoda runtime:
+
+```bash
+brew install --cask cyoda/cyoda/cyoda-dev-console
+```
+
+Alternative: download the v0.1.0 Apple Silicon DMG:
+https://github.com/Cyoda/cyoda-dev-console/releases/download/v0.1.0/cyoda-dev-console_0.1.0_aarch64.dmg
+
+Learn more: https://DOMAIN_PLACEHOLDER/dev-console
+
 Import a minimal entity workflow for model `orders`, version `1`:
 
 ```json
@@ -135,6 +152,7 @@ Full documentation is at docs.cyoda.net. The install-and-first-entity guide cove
 - Releases: https://github.com/Cyoda-platform/cyoda-go/releases
 - Documentation: https://docs.cyoda.net
 - Install and First Entity: https://docs.cyoda.net/getting-started/install-and-first-entity/
+- Developer Console: https://DOMAIN_PLACEHOLDER/dev-console
 - Cyoda Cloud: https://ai.cyoda.net/
 - Enterprise Cyoda: https://cyoda.com
 

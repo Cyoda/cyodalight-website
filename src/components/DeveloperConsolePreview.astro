@@ -1,0 +1,75 @@
+---
+import Badge from './Badge.astro';
+import DeveloperConsoleMedia from './DeveloperConsoleMedia.astro';
+import { developerConsoleRelease } from '../data/developerConsole';
+---
+
+<section
+  class="section dev-console-preview"
+  id="developer-console-preview"
+  aria-labelledby="developer-console-preview-heading"
+  data-analytics-event="dev_console_home_section_view"
+  data-analytics-source="homepage"
+  data-analytics-version="0.1.0"
+  data-analytics-platform="macos_apple_silicon"
+>
+  <div class="container">
+    <div class="dev-console-preview__inner">
+      <div class="dev-console-preview__copy">
+        <div class="dev-console-preview__badge">
+          <Badge label="Developer Console · Preview" variant="accent" />
+        </div>
+
+        <h2 class="section-heading" id="developer-console-preview-heading">
+          Generate with AI. Refine the workflow visually.
+        </h2>
+
+        <p class="section-subheading">
+          Cyoda Developer Console is an early-preview desktop application for
+          inspecting and editing Cyoda workflows. Generate a workflow with your
+          AI coding agent, open it in the console, refine the states and
+          transitions visually, then run it against your local Cyoda runtime.
+        </p>
+
+        <ul class="dev-console-preview__evidence" role="list">
+          <li>Visual workflow editing</li>
+        </ul>
+
+        <p class="dev-console-preview__meta">
+          {developerConsoleRelease.version} · {developerConsoleRelease.status} · {developerConsoleRelease.platform}
+        </p>
+
+        <div class="hero__actions">
+          <a
+            href={developerConsoleRelease.pagePath}
+            class="btn btn--primary"
+            data-analytics-event="dev_console_home_view_page_click"
+            data-analytics-source="homepage"
+            data-analytics-version="0.1.0"
+            data-analytics-platform="macos_apple_silicon"
+          >
+            View Developer Console &rarr;
+          </a>
+          <a
+            href={developerConsoleRelease.dmgUrl}
+            class="btn btn--text"
+            aria-label="Download Cyoda Developer Console v0.1.0 DMG for macOS Apple Silicon"
+            data-analytics-event="dev_console_home_download_click"
+            data-analytics-source="homepage"
+            data-analytics-version="0.1.0"
+            data-analytics-platform="macos_apple_silicon"
+            data-analytics-asset="dmg"
+          >
+            Download v0.1.0
+          </a>
+        </div>
+      </div>
+
+      <DeveloperConsoleMedia
+        label="Developer Console preview media"
+        description="Placeholder reserved for the real v0.1.0 workflow editor screenshot or muted product loop."
+        variant="compact"
+      />
+    </div>
+  </div>
+</section>

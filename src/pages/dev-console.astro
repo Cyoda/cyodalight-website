@@ -1,0 +1,339 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/Badge.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import DeveloperConsoleMedia from '../components/DeveloperConsoleMedia.astro';
+import { site } from '../data/site';
+import { developerConsoleRelease } from '../data/developerConsole';
+
+const title = 'Cyoda Developer Console Preview | Visual Workflow Editor';
+const description =
+  'Inspect and refine Cyoda workflows visually with the Cyoda Developer Console v0.1.0 preview for macOS Apple Silicon.';
+const ogDescription =
+  'Generate Cyoda workflows with AI, inspect and refine them visually, and run them against your local Cyoda runtime.';
+const ogImage = `https://cyoda.dev${developerConsoleRelease.media.poster}`;
+
+const runtimeInstallCommand = `${developerConsoleRelease.runtimeBrewCommand}
+${developerConsoleRelease.runtimeStartCommand}`;
+
+const softwareAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: developerConsoleRelease.name,
+  softwareVersion: developerConsoleRelease.version,
+  operatingSystem: 'macOS on Apple Silicon',
+  applicationCategory: 'DeveloperApplication',
+  downloadUrl: developerConsoleRelease.dmgUrl,
+  codeRepository: developerConsoleRelease.repositoryUrl,
+  url: developerConsoleRelease.canonicalUrl,
+  author: {
+    '@type': 'Organization',
+    name: site.copyrightHolder,
+    url: site.cyoda,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={developerConsoleRelease.canonicalUrl}
+  ogTitle="Cyoda Developer Console v0.1.0 Preview"
+  ogDescription={ogDescription}
+  ogImage={ogImage}
+  ogImageWidth={1200}
+  ogImageHeight={675}
+  twitterDescription={ogDescription}
+  structuredData={[softwareAppSchema]}
+>
+  <section
+    class="dev-console-page-hero"
+    aria-labelledby="dev-console-heading"
+    data-analytics-event="dev_console_page_view"
+    data-analytics-source="dev_console_page"
+    data-analytics-version="0.1.0"
+    data-analytics-platform="macos_apple_silicon"
+  >
+    <div class="container">
+      <div class="dev-console-page-hero__inner">
+        <div class="dev-console-page-hero__copy">
+          <Badge label="Cyoda Developer Console · v0.1.0 Preview" variant="accent" />
+
+          <h1 class="hero__headline" id="dev-console-heading">
+            Inspect and refine Cyoda workflows visually.
+          </h1>
+
+          <p class="hero__subhead">
+            An optional desktop companion for the Cyoda runtime. Generate
+            workflows with an AI coding agent, inspect their states and
+            transitions visually, edit the model, and continue running the same
+            workflow against your local Cyoda environment.
+          </p>
+
+          <div class="hero__actions">
+            <a
+              href="#install-preview"
+              class="btn btn--primary"
+            >
+              Install with Homebrew &rarr;
+            </a>
+            <a
+              href={developerConsoleRelease.dmgUrl}
+              class="btn btn--text"
+              aria-label="Download Cyoda Developer Console v0.1.0 DMG for macOS Apple Silicon"
+              data-analytics-event="dev_console_dmg_download_click"
+              data-analytics-source="dev_console_page"
+              data-analytics-version="0.1.0"
+              data-analytics-platform="macos_apple_silicon"
+              data-analytics-asset="dmg"
+            >
+              Download DMG
+            </a>
+          </div>
+
+          <a
+            href={developerConsoleRelease.releasesUrl}
+            class="quickstart__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="dev_console_github_release_click"
+            data-analytics-source="dev_console_page"
+            data-analytics-version="0.1.0"
+            data-analytics-platform="macos_apple_silicon"
+            data-analytics-asset="github_release"
+          >
+            &rarr; View release on GitHub
+          </a>
+
+          <p class="dev-console-page-hero__support">
+            Available now for macOS Apple Silicon.
+          </p>
+        </div>
+
+        <DeveloperConsoleMedia
+          label="45-second product demo placeholder"
+          description="Reserved for the real v0.1.0 demo video with controls and poster fallback."
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="dev-console-loop-heading">
+    <div class="container">
+      <div class="dev-console-section-header">
+        <h2 class="section-heading" id="dev-console-loop-heading">
+          One model across AI, visual editing, and runtime execution.
+        </h2>
+        <p class="section-subheading">
+          The console does not introduce a separate application model or
+          privileged runtime path. It works with the same explicit workflow model
+          used by application code, AI tools, and the Cyoda runtime.
+        </p>
+      </div>
+
+      <ol class="dev-console-flow" aria-label="Cyoda workflow model lifecycle">
+        <li>AI coding agent</li>
+        <li>Cyoda workflow model</li>
+        <li>Developer Console</li>
+        <li>Cyoda runtime</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="dev-console-capabilities-heading">
+    <div class="container">
+      <div class="dev-console-section-header">
+        <h2 class="section-heading" id="dev-console-capabilities-heading">
+          What the v0.1.0 preview shows
+        </h2>
+        <p class="section-subheading">
+          These blocks are reserved for real v0.1.0 evidence. Replace the
+          placeholders with user-supplied screenshots before final launch.
+        </p>
+      </div>
+
+      <div class="dev-console-capabilities">
+        <article class="dev-console-capability">
+          <DeveloperConsoleMedia
+            label="Inspect workflow structure"
+            description="Show states, transitions, criteria, and processors in context once the real screenshot is supplied."
+            variant="compact"
+          />
+          <div>
+            <h3>Inspect workflow structure</h3>
+            <p>
+              Review the state and transition model generated by application
+              code or an AI coding agent before running it locally.
+            </p>
+          </div>
+        </article>
+
+        <article class="dev-console-capability">
+          <DeveloperConsoleMedia
+            label="Edit workflows visually"
+            description="Show a genuine visual editing action from the released preview."
+            variant="compact"
+          />
+          <div>
+            <h3>Edit workflows visually</h3>
+            <p>
+              Refine workflow states and transitions in the console, then keep
+              working with the same Cyoda workflow model.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="section section--alt"
+    id="install-preview"
+    aria-labelledby="dev-console-install-heading"
+  >
+    <div class="container">
+      <div class="dev-console-install">
+        <div class="dev-console-section-header">
+          <h2 class="section-heading" id="dev-console-install-heading">
+            Install the preview
+          </h2>
+          <p class="section-subheading">
+            Cyoda Developer Console is optional. Install and start the Cyoda
+            runtime first, then install the console.
+          </p>
+        </div>
+
+        <div class="dev-console-install__steps">
+          <article class="dev-console-install__step">
+            <p class="dev-console-install__label">Step 1</p>
+            <h3>Install and run Cyoda</h3>
+            <CodeBlock
+              code={runtimeInstallCommand}
+              language="bash"
+              label="cyoda-runtime.sh"
+            />
+          </article>
+
+          <article class="dev-console-install__step">
+            <p class="dev-console-install__label">Step 2</p>
+            <h3>Install Developer Console</h3>
+            <CodeBlock
+              code={developerConsoleRelease.brewCommand}
+              language="bash"
+              label="cyoda-dev-console.sh"
+              analyticsEvent="dev_console_brew_copy"
+              analyticsSource="dev_console_page"
+              analyticsVersion="0.1.0"
+              analyticsPlatform="macos_apple_silicon"
+              analyticsAsset="brew"
+            />
+            <p class="dev-console-install__note">
+              Requires macOS on Apple Silicon.
+            </p>
+            <a
+              href={developerConsoleRelease.dmgUrl}
+              class="quickstart__link"
+              aria-label="Download the v0.1.0 Apple Silicon DMG for Cyoda Developer Console"
+              data-analytics-event="dev_console_dmg_download_click"
+              data-analytics-source="dev_console_page"
+              data-analytics-version="0.1.0"
+              data-analytics-platform="macos_apple_silicon"
+              data-analytics-asset="dmg"
+            >
+              &rarr; Download the Apple Silicon DMG
+            </a>
+          </article>
+
+          <article class="dev-console-install__step">
+            <p class="dev-console-install__label">Step 3</p>
+            <h3>Open the application</h3>
+            <p>
+              Open Cyoda Developer Console after starting your local Cyoda
+              runtime. Follow the connection controls shown in the application.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="dev-console-open-source-heading">
+    <div class="container">
+      <div class="dev-console-open-source">
+        <div>
+          <h2 class="section-heading" id="dev-console-open-source-heading">
+            Open source and early
+          </h2>
+          <p class="section-subheading">
+            The Developer Console is released as an early preview. Inspect the
+            source, review the current release, report issues, and follow
+            development on GitHub.
+          </p>
+        </div>
+
+        <div class="dev-console-open-source__links">
+          <a
+            href={developerConsoleRelease.repositoryUrl}
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="dev_console_repo_click"
+            data-analytics-source="dev_console_page"
+            data-analytics-version="0.1.0"
+            data-analytics-platform="macos_apple_silicon"
+          >
+            View repository &rarr;
+          </a>
+          <a
+            href={developerConsoleRelease.releasesUrl}
+            class="btn btn--text"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="dev_console_github_release_click"
+            data-analytics-source="dev_console_page"
+            data-analytics-version="0.1.0"
+            data-analytics-platform="macos_apple_silicon"
+            data-analytics-asset="github_release"
+          >
+            View v0.1.0 release
+          </a>
+          <a
+            href={developerConsoleRelease.issuesUrl}
+            class="btn btn--text"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="dev-console-cta-heading">
+    <div class="container">
+      <div class="final-cta">
+        <h2 class="section-heading" id="dev-console-cta-heading">
+          Start with the runtime.
+        </h2>
+        <p class="section-subheading">
+          Install Cyoda locally, then add the Developer Console when you want to
+          inspect and refine workflows visually.
+        </p>
+        <div class="final-cta__actions">
+          <a
+            href={site.docsQuickstart}
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Install Cyoda &rarr;
+          </a>
+          <a href="#install-preview" class="btn btn--text">
+            Install Developer Console
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
