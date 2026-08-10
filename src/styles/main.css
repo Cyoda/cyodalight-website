@@ -288,18 +288,10 @@ samp {
   color: var(--text-primary);
 }
 
-.navbar__wordmark {
-  display: flex;
-  align-items: baseline;
-  gap: 2px;
-}
-
-.navbar__wordmark-cyoda {
-  font-weight: 400;
-}
-
-.navbar__wordmark-light {
-  font-weight: 600;
+.navbar__logo-image {
+  display: block;
+  width: auto;
+  height: 22px;
 }
 
 .navbar__links {

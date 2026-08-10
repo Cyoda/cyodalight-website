@@ -14,11 +14,8 @@ const base = import.meta.env.BASE_URL;
 <header class="navbar" role="banner">
   <div class="container">
     <nav class="navbar__inner" aria-label="Main navigation">
-      <!-- Wordmark -->
       <a href={base} class="navbar__logo" aria-label="Cyoda home">
-        <span class="navbar__wordmark">
-          <span class="navbar__wordmark-cyoda">Cyoda</span>
-        </span>
+        <img src={`${base}images/cyoda.svg`} alt="Cyoda" class="navbar__logo-image" />
       </a>
 
       <!-- Desktop nav links -->
