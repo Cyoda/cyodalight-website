@@ -20,7 +20,7 @@ export default defineConfig({
   },
   vite: {
     ssr: {
-      noExternal: ['@cyoda/workflow-react', 'reactflow'],
+      noExternal: ['@cyoda/workflow-viewer'],
     },
   },
 });

@@ -1,7 +1,7 @@
 export const developerConsoleRelease = {
   name: 'Cyoda Developer Console',
-  version: 'v0.1.0',
-  status: 'Preview',
+  version: 'v0.3.0',
+  status: 'Latest',
   platform: 'macOS Apple Silicon',
   brewCommand: 'brew install --cask cyoda/cyoda/cyoda-dev-console',
   runtimeBrewCommand: 'brew install cyoda-platform/cyoda-go/cyoda',
@@ -10,7 +10,7 @@ export const developerConsoleRelease = {
   releasesUrl: 'https://github.com/Cyoda/cyoda-dev-console/releases',
   issuesUrl: 'https://github.com/Cyoda/cyoda-dev-console/issues',
   dmgUrl:
-    'https://github.com/Cyoda/cyoda-dev-console/releases/download/v0.1.0/cyoda-dev-console_0.1.0_aarch64.dmg',
+    'https://github.com/Cyoda/cyoda-dev-console/releases/download/v0.3.0/cyoda-dev-console_0.3.0_aarch64.dmg',
   pagePath: '/dev-console',
   canonicalUrl: 'https://cyoda.dev/dev-console',
   media: {

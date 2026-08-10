@@ -11,7 +11,7 @@ const exact = {
   runtimeCommand: 'brew install cyoda-platform/cyoda-go/cyoda',
   consoleCommand: 'brew install --cask cyoda/cyoda/cyoda-dev-console',
   dmgUrl:
-    'https://github.com/Cyoda/cyoda-dev-console/releases/download/v0.1.0/cyoda-dev-console_0.1.0_aarch64.dmg',
+    'https://github.com/Cyoda/cyoda-dev-console/releases/download/v0.3.0/cyoda-dev-console_0.3.0_aarch64.dmg',
   repoUrl: 'https://github.com/Cyoda/cyoda-dev-console',
   releasesUrl: 'https://github.com/Cyoda/cyoda-dev-console/releases',
   issuesUrl: 'https://github.com/Cyoda/cyoda-dev-console/issues',
@@ -59,10 +59,10 @@ assertIncludes(homepage, 'Three ways to use Cyoda', 'homepage');
 assertIncludes(homepage, '/dev-console', 'homepage');
 assertIncludes(homepage, exact.dmgUrl, 'homepage');
 assertIncludes(homepage, 'macOS Apple Silicon', 'homepage');
-assertIncludes(homepage, 'v0.1.0', 'homepage');
-assertIncludes(homepage, 'Preview', 'homepage');
+assertIncludes(homepage, 'v0.3.0', 'homepage');
+assertIncludes(homepage, 'Latest', 'homepage');
 
-assertIncludes(devConsole, 'Cyoda Developer Console Preview | Visual Workflow Editor', 'dev-console title');
+assertIncludes(devConsole, 'Cyoda Developer Console | Read-only Workflow Display', 'dev-console title');
 assertIncludes(devConsole, 'https://cyoda.dev/dev-console', 'dev-console canonical');
 assertIncludes(devConsole, 'Inspect and refine Cyoda workflows visually.', 'dev-console');
 assertIncludes(devConsole, 'optional desktop companion', 'dev-console');

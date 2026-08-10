@@ -53,7 +53,7 @@ import { developerConsoleRelease } from '../data/developerConsole';
         <div class="quickstart__optional">
           <h3>Optional: install Cyoda Developer Console</h3>
           <p>
-            Cyoda Developer Console is an early-preview desktop companion for
+            Cyoda Developer Console is a desktop companion for
             visually inspecting and editing workflows. It is optional and
             currently available for macOS Apple Silicon.
           </p>
@@ -63,21 +63,21 @@ import { developerConsoleRelease } from '../data/developerConsole';
             label="cyoda-dev-console.sh"
             analyticsEvent="dev_console_brew_copy"
             analyticsSource="docs"
-            analyticsVersion="0.1.0"
+            analyticsVersion="0.3.0"
             analyticsPlatform="macos_apple_silicon"
             analyticsAsset="brew"
           />
           <a
             href={developerConsoleRelease.dmgUrl}
             class="quickstart__link"
-            aria-label="Download the v0.1.0 Apple Silicon DMG for Cyoda Developer Console"
+            aria-label="Download the v0.3.0 Apple Silicon DMG for Cyoda Developer Console"
             data-analytics-event="dev_console_dmg_download_click"
             data-analytics-source="docs"
-            data-analytics-version="0.1.0"
+            data-analytics-version="0.3.0"
             data-analytics-platform="macos_apple_silicon"
             data-analytics-asset="dmg"
           >
-            &rarr; Download the v0.1.0 Apple Silicon DMG
+            &rarr; Download the v0.3.0 Apple Silicon DMG
           </a>
           <a href={developerConsoleRelease.pagePath} class="quickstart__link">
             &rarr; Learn more about Developer Console
@@ -97,7 +97,7 @@ import { developerConsoleRelease } from '../data/developerConsole';
 
       <div
         class="workflow-artifact"
-        aria-label="HelloWorld entity workflow editor"
+        aria-label="HelloWorld entity workflow display"
       >
         <div class="workflow-artifact__header">
           <div>
@@ -107,7 +107,7 @@ import { developerConsoleRelease } from '../data/developerConsole';
               Lifecycle for the HelloWorld example entity
             </p>
           </div>
-          <span class="workflow-artifact__badge">Editable</span>
+          <span class="workflow-artifact__badge">Display</span>
         </div>
         <div class="workflow-artifact__canvas">
           <HelloWorldWorkflowViewer client:only="react" />

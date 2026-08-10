@@ -63,7 +63,7 @@ cyoda
 
 ### Optional: Cyoda Developer Console
 
-Cyoda Developer Console is an early-preview desktop companion for visually
+Cyoda Developer Console is a desktop companion for visually
 inspecting and editing workflows. It is optional and currently available for
 macOS Apple Silicon.
 
@@ -73,8 +73,8 @@ Install it after installing and starting the Cyoda runtime:
 brew install --cask cyoda/cyoda/cyoda-dev-console
 ```
 
-Alternative: download the v0.1.0 Apple Silicon DMG:
-https://github.com/Cyoda/cyoda-dev-console/releases/download/v0.1.0/cyoda-dev-console_0.1.0_aarch64.dmg
+Alternative: download the v0.3.0 Apple Silicon DMG:
+https://github.com/Cyoda/cyoda-dev-console/releases/download/v0.3.0/cyoda-dev-console_0.3.0_aarch64.dmg
 
 Learn more: https://DOMAIN_PLACEHOLDER/dev-console
 

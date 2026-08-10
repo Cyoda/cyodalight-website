@@ -1,5 +1,7 @@
 ---
 import { developerConsoleRelease } from '../data/developerConsole';
+import WorkflowDisplay from './WorkflowDisplay';
+import treasuryRepoWorkflow from '../data/treasury-repo-workflow.json?raw';
 
 interface Props {
   label: string;
@@ -19,28 +21,25 @@ const { label, description, variant = 'wide' } = Astro.props;
   data-expected-video-webm={developerConsoleRelease.media.demoWebm}
   data-expected-video-mp4={developerConsoleRelease.media.demoMp4}
 >
-  <!-- Replace this placeholder with real v0.1.0 screenshots/video before final launch. -->
   <div
-    class="dev-console-media__placeholder"
+    class="dev-console-media__display"
     role="img"
-    aria-label="Cyoda Developer Console displaying a workflow graph with states and transitions."
+    aria-label="Cyoda Console displaying a read-only treasury repo workflow with automatic and manual transitions."
   >
-    <div class="dev-console-media__chrome" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="dev-console-media__canvas" aria-hidden="true">
-      <div class="dev-console-media__node dev-console-media__node--draft">draft</div>
-      <div class="dev-console-media__line dev-console-media__line--one"></div>
-      <div class="dev-console-media__node dev-console-media__node--review">review</div>
-      <div class="dev-console-media__line dev-console-media__line--two"></div>
-      <div class="dev-console-media__node dev-console-media__node--done">approved</div>
-      <div class="dev-console-media__panel">
-        <span>criteria</span>
-        <span>processors</span>
-        <span>source</span>
+    <div class="dev-console-media__toolbar" aria-hidden="true">
+      <div class="dev-console-media__identity">
+        <span class="dev-console-media__mark">C</span>
+        <span>Cyoda Console</span>
+        <span class="dev-console-media__mode">Display</span>
       </div>
+      <span class="dev-console-media__readonly">Read only</span>
+    </div>
+    <div class="dev-console-media__workflow">
+      <WorkflowDisplay client:only="react" workflowJson={treasuryRepoWorkflow} compact />
+    </div>
+    <div class="dev-console-media__legend" aria-hidden="true">
+      <span><i class="dev-console-media__legend-line"></i>STP / automatic</span>
+      <span><i class="dev-console-media__legend-line dev-console-media__legend-line--manual"></i>Manual</span>
     </div>
     <figcaption class="dev-console-media__caption">
       <strong>{label}</strong>

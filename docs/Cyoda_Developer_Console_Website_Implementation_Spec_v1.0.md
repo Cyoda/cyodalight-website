@@ -51,7 +51,7 @@ The console must not be presented as:
 
 Use this conceptual positioning throughout:
 
-> Cyoda Developer Console is an early-preview desktop application for inspecting and refining Cyoda workflows visually. It connects to the same Cyoda runtime used by application code and AI coding agents.
+> Cyoda Developer Console is a desktop application for inspecting and refining Cyoda workflows visually. It connects to the same Cyoda runtime used by application code and AI coding agents.
 
 ### 2.3 Proof over adjectives
 
@@ -241,7 +241,7 @@ Use the following copy unless small adaptations are required to match the existi
 
 #### Body
 
-> Cyoda Developer Console is an early-preview desktop application for inspecting and editing Cyoda workflows. Generate a workflow with your AI coding agent, open it in the console, refine the states and transitions visually, then run it against your local Cyoda runtime.
+> Cyoda Developer Console is a desktop application for inspecting and editing Cyoda workflows. Generate a workflow with your AI coding agent, open it in the console, refine the states and transitions visually, then run it against your local Cyoda runtime.
 
 #### Evidence labels
 
@@ -615,7 +615,7 @@ After runtime installation and startup, add:
 
 #### Optional: install Cyoda Developer Console
 
-> Cyoda Developer Console is an early-preview desktop companion for visually inspecting and editing workflows. It is optional and currently available for macOS Apple Silicon.
+> Cyoda Developer Console is a desktop companion for visually inspecting and editing workflows. It is optional and currently available for macOS Apple Silicon.
 
 ```bash
 brew install --cask cyoda/cyoda/cyoda-dev-console

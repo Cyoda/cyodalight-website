@@ -6,9 +6,9 @@ import DeveloperConsoleMedia from '../components/DeveloperConsoleMedia.astro';
 import { site } from '../data/site';
 import { developerConsoleRelease } from '../data/developerConsole';
 
-const title = 'Cyoda Developer Console Preview | Visual Workflow Editor';
+const title = 'Cyoda Developer Console | Read-only Workflow Display';
 const description =
-  'Inspect and refine Cyoda workflows visually with the Cyoda Developer Console v0.1.0 preview for macOS Apple Silicon.';
+  'Inspect Cyoda workflows visually with the Cyoda Developer Console v0.3.0 for macOS Apple Silicon.';
 const ogDescription =
   'Generate Cyoda workflows with AI, inspect and refine them visually, and run them against your local Cyoda runtime.';
 const ogImage = `https://cyoda.dev${developerConsoleRelease.media.poster}`;
@@ -38,7 +38,7 @@ const softwareAppSchema = {
   title={title}
   description={description}
   canonicalUrl={developerConsoleRelease.canonicalUrl}
-  ogTitle="Cyoda Developer Console v0.1.0 Preview"
+  ogTitle="Cyoda Developer Console v0.3.0"
   ogDescription={ogDescription}
   ogImage={ogImage}
   ogImageWidth={1200}
@@ -51,13 +51,13 @@ const softwareAppSchema = {
     aria-labelledby="dev-console-heading"
     data-analytics-event="dev_console_page_view"
     data-analytics-source="dev_console_page"
-    data-analytics-version="0.1.0"
+    data-analytics-version="0.3.0"
     data-analytics-platform="macos_apple_silicon"
   >
     <div class="container">
       <div class="dev-console-page-hero__inner">
         <div class="dev-console-page-hero__copy">
-          <Badge label="Cyoda Developer Console · v0.1.0 Preview" variant="accent" />
+          <Badge label="Cyoda Developer Console · v0.3.0" variant="accent" />
 
           <h1 class="hero__headline" id="dev-console-heading">
             Inspect and refine Cyoda workflows visually.
@@ -80,10 +80,10 @@ const softwareAppSchema = {
             <a
               href={developerConsoleRelease.dmgUrl}
               class="btn btn--text"
-              aria-label="Download Cyoda Developer Console v0.1.0 DMG for macOS Apple Silicon"
+              aria-label="Download Cyoda Developer Console v0.3.0 DMG for macOS Apple Silicon"
               data-analytics-event="dev_console_dmg_download_click"
               data-analytics-source="dev_console_page"
-              data-analytics-version="0.1.0"
+              data-analytics-version="0.3.0"
               data-analytics-platform="macos_apple_silicon"
               data-analytics-asset="dmg"
             >
@@ -98,7 +98,7 @@ const softwareAppSchema = {
             rel="noopener noreferrer"
             data-analytics-event="dev_console_github_release_click"
             data-analytics-source="dev_console_page"
-            data-analytics-version="0.1.0"
+            data-analytics-version="0.3.0"
             data-analytics-platform="macos_apple_silicon"
             data-analytics-asset="github_release"
           >
@@ -112,7 +112,7 @@ const softwareAppSchema = {
 
         <DeveloperConsoleMedia
           label="45-second product demo placeholder"
-          description="Reserved for the real v0.1.0 demo video with controls and poster fallback."
+          description="Read-only treasury repo lifecycle with automatic STP and manual approval paths."
         />
       </div>
     </div>
@@ -144,11 +144,10 @@ const softwareAppSchema = {
     <div class="container">
       <div class="dev-console-section-header">
         <h2 class="section-heading" id="dev-console-capabilities-heading">
-          What the v0.1.0 preview shows
+          What v0.3.0 shows
         </h2>
         <p class="section-subheading">
-          These blocks are reserved for real v0.1.0 evidence. Replace the
-          placeholders with user-supplied screenshots before final launch.
+          The display uses the current Console workflow viewer, without editing controls.
         </p>
       </div>
 
@@ -156,7 +155,7 @@ const softwareAppSchema = {
         <article class="dev-console-capability">
           <DeveloperConsoleMedia
             label="Inspect workflow structure"
-            description="Show states, transitions, criteria, and processors in context once the real screenshot is supplied."
+            description="Read-only display of a treasury repo lifecycle with automatic STP and manual approval paths."
             variant="compact"
           />
           <div>
@@ -170,12 +169,12 @@ const softwareAppSchema = {
 
         <article class="dev-console-capability">
           <DeveloperConsoleMedia
-            label="Edit workflows visually"
-            description="Show a genuine visual editing action from the released preview."
+            label="Review workflow paths"
+            description="The minimal display makes the automatic and manual paths legible without editing controls."
             variant="compact"
           />
           <div>
-            <h3>Edit workflows visually</h3>
+            <h3>Review workflow paths</h3>
             <p>
               Refine workflow states and transitions in the console, then keep
               working with the same Cyoda workflow model.
@@ -223,7 +222,7 @@ const softwareAppSchema = {
               label="cyoda-dev-console.sh"
               analyticsEvent="dev_console_brew_copy"
               analyticsSource="dev_console_page"
-              analyticsVersion="0.1.0"
+              analyticsVersion="0.3.0"
               analyticsPlatform="macos_apple_silicon"
               analyticsAsset="brew"
             />
@@ -233,10 +232,10 @@ const softwareAppSchema = {
             <a
               href={developerConsoleRelease.dmgUrl}
               class="quickstart__link"
-              aria-label="Download the v0.1.0 Apple Silicon DMG for Cyoda Developer Console"
+              aria-label="Download the v0.3.0 Apple Silicon DMG for Cyoda Developer Console"
               data-analytics-event="dev_console_dmg_download_click"
               data-analytics-source="dev_console_page"
-              data-analytics-version="0.1.0"
+              data-analytics-version="0.3.0"
               data-analytics-platform="macos_apple_silicon"
               data-analytics-asset="dmg"
             >
@@ -279,7 +278,7 @@ const softwareAppSchema = {
             rel="noopener noreferrer"
             data-analytics-event="dev_console_repo_click"
             data-analytics-source="dev_console_page"
-            data-analytics-version="0.1.0"
+            data-analytics-version="0.3.0"
             data-analytics-platform="macos_apple_silicon"
           >
             View repository &rarr;
@@ -291,11 +290,11 @@ const softwareAppSchema = {
             rel="noopener noreferrer"
             data-analytics-event="dev_console_github_release_click"
             data-analytics-source="dev_console_page"
-            data-analytics-version="0.1.0"
+            data-analytics-version="0.3.0"
             data-analytics-platform="macos_apple_silicon"
             data-analytics-asset="github_release"
           >
-            View v0.1.0 release
+            View v0.3.0 release
           </a>
           <a
             href={developerConsoleRelease.issuesUrl}
