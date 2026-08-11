@@ -1042,6 +1042,20 @@ samp {
   margin-bottom: var(--space-5);
 }
 
+.dev-console-mcp {
+  max-width: 820px;
+}
+
+.dev-console-mcp__setup {
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+}
+
+.dev-console-mcp__usage {
+  margin-top: var(--space-3);
+  color: var(--text-secondary);
+}
+
 .dev-console-flow {
   display: grid;
   gap: var(--space-3);

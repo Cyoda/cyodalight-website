@@ -16,6 +16,24 @@ const ogImage = `https://cyoda.dev${developerConsoleRelease.media.poster}`;
 const runtimeInstallCommand = `${developerConsoleRelease.runtimeBrewCommand}
 ${developerConsoleRelease.runtimeStartCommand}`;
 
+const modelEditorMcpConfig = `{
+  "mcpServers": {
+    "model-editor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@cyoda/model-editor-mcp",
+        "--project",
+        ".",
+        "--workflow-globs",
+        "models/workflow/**/*.json",
+        "--entity-globs",
+        "models/schema/**/*.json"
+      ]
+    }
+  }
+}`;
+
 const softwareAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -72,7 +90,7 @@ const softwareAppSchema = {
 
           <div class="hero__actions">
             <a
-              href="#install-preview"
+              href="#install-developer-console"
               class="btn btn--primary"
             >
               Install with Homebrew &rarr;
@@ -142,14 +160,48 @@ const softwareAppSchema = {
 
   <section
     class="section section--alt"
-    id="install-preview"
+    id="model-editor-mcp"
+    aria-labelledby="model-editor-mcp-heading"
+  >
+    <div class="container">
+      <div class="dev-console-section-header">
+        <h2 class="section-heading" id="model-editor-mcp-heading">
+          Model Editor MCP for AI CLIs
+        </h2>
+        <p class="section-subheading">
+          Give your AI coding agent direct, project-scoped access to Cyoda entity and workflow models. No clone or build required.
+        </p>
+      </div>
+
+      <div class="dev-console-mcp">
+        <p class="dev-console-mcp__setup">
+          Add this to <code>.mcp.json</code> at your project root, then reconnect your MCP-capable CLI.
+        </p>
+        <CodeBlock
+          code={modelEditorMcpConfig}
+          language="json"
+          label=".mcp.json"
+          analyticsEvent="model_editor_mcp_config_copy"
+          analyticsSource="dev_console_page"
+          analyticsAsset="mcp_config"
+        />
+        <p class="dev-console-mcp__usage">
+          Your CLI starts the server for the configured project and discovers the matching workflow and entity JSON files. Ask it to show a model or use <code>connection_info</code> to open the live editor; the agent owns model content, while people can browse and arrange the canvas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="section section--alt"
+    id="install-developer-console"
     aria-labelledby="dev-console-install-heading"
   >
     <div class="container">
       <div class="dev-console-install">
         <div class="dev-console-section-header">
           <h2 class="section-heading" id="dev-console-install-heading">
-            Install the preview
+            Install Developer Console
           </h2>
           <p class="section-subheading">
             Cyoda Developer Console is optional. Install and start the Cyoda
@@ -216,12 +268,11 @@ const softwareAppSchema = {
       <div class="dev-console-open-source">
         <div>
           <h2 class="section-heading" id="dev-console-open-source-heading">
-            Open source and early
+            Open source
           </h2>
           <p class="section-subheading">
-            The Developer Console is released as an early preview. Inspect the
-            source, review the current release, report issues, and follow
-            development on GitHub.
+            Inspect the source, review the current release, report issues, and
+            follow development on GitHub.
           </p>
         </div>
 
@@ -283,7 +334,7 @@ const softwareAppSchema = {
           >
             Install Cyoda &rarr;
           </a>
-          <a href="#install-preview" class="btn btn--text">
+          <a href="#install-developer-console" class="btn btn--text">
             Install Developer Console
           </a>
         </div>
