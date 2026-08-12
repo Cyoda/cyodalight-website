@@ -17,16 +17,7 @@ const modelEditorMcpConfig = `{
   "mcpServers": {
     "model-editor": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@cyoda/model-editor-mcp",
-        "--project",
-        ".",
-        "--workflow-globs",
-        "models/workflow/**/*.json",
-        "--entity-globs",
-        "models/schema/**/*.json"
-      ]
+      "args": ["-y", "@cyoda/model-editor-mcp@0.2.1", "--project", "."]
     }
   }
 }`;
@@ -182,7 +173,10 @@ const softwareAppSchema = {
           analyticsAsset="mcp_config"
         />
         <p class="dev-console-mcp__usage">
-          Your CLI starts the server for the configured project and discovers the matching workflow and entity JSON files. Ask it to show a model or use <code>connection_info</code> to open the live editor; the agent owns model content, while people can browse and arrange the canvas.
+          Your CLI starts the server for the configured project. Ask it to show a
+          model or use <code>connection_info</code> to open the live editor; the
+          agent owns model content, while people can browse and arrange the
+          canvas.
         </p>
       </div>
     </div>
