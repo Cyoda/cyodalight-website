@@ -11,7 +11,7 @@ const description =
   'Inspect and correct generated Cyoda workflow JSON locally with Cyoda Developer Console v0.3.0.';
 const ogDescription =
   'Inspect and correct generated Cyoda workflow JSON locally, without a running Cyoda environment.';
-const ogImage = `https://cyoda.dev${developerConsoleRelease.media.poster}`;
+const ogImage = `${site.url}${site.ogImage}`;
 
 const modelEditorMcpConfig = `{
   "mcpServers": {
@@ -47,8 +47,8 @@ const softwareAppSchema = {
   ogTitle="Cyoda Developer Console v0.3.0"
   ogDescription={ogDescription}
   ogImage={ogImage}
-  ogImageWidth={1200}
-  ogImageHeight={675}
+  ogImageWidth={site.ogImageWidth}
+  ogImageHeight={site.ogImageHeight}
   twitterDescription={ogDescription}
   structuredData={[softwareAppSchema]}
 >
@@ -117,7 +117,7 @@ const softwareAppSchema = {
         </div>
 
         <DeveloperConsoleMedia
-          label="45-second product demo placeholder"
+          label="Example workflow display"
           description="Read-only treasury repo lifecycle with automatic STP and manual approval paths."
         />
       </div>
@@ -162,7 +162,8 @@ const softwareAppSchema = {
 
       <div class="dev-console-mcp">
         <p class="dev-console-mcp__setup">
-          Add this to <code>.mcp.json</code> at your project root, then reconnect your MCP-capable CLI.
+          Add this to <code>.mcp.json</code> at your project root, then reconnect
+          your MCP-capable CLI. Requires Node.js 22 or newer.
         </p>
         <CodeBlock
           code={modelEditorMcpConfig}
@@ -174,7 +175,7 @@ const softwareAppSchema = {
         />
         <p class="dev-console-mcp__usage">
           Your CLI starts the server for the configured project. Ask it to show a
-          model or use <code>connection_info</code> to open the live editor; the
+          model or use <code>connection_info</code> to get the live editor's URL; the
           agent owns model content, while people can browse and arrange the
           canvas.
         </p>

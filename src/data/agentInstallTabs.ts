@@ -37,6 +37,7 @@ export const agentInstallTabs: AgentInstallTab[] = [
         label: "Useful Cyoda commands",
         language: "text",
         code: `/cyoda:setup
+/cyoda:auth
 /cyoda:design
 /cyoda:build
 /cyoda:compute
@@ -58,9 +59,9 @@ export const agentInstallTabs: AgentInstallTab[] = [
       {
         label: "Install locally",
         language: "bash",
-        code: `git clone https://github.com/Cyoda-platform/cyoda-skills.git
+        code: `git clone https://github.com/Cyoda/cyoda-skills.git
 mkdir -p ~/.agents/skills
-cp -R cyoda-skills/cyoda/skills/cyoda-* ~/.agents/skills/`,
+cp -R cyoda-skills/cyoda/skills/* ~/.agents/skills/`,
       },
       {
         label: "Restart Codex",
@@ -76,10 +77,11 @@ grep -R "^name:" ~/.agents/skills/*/SKILL.md`,
       {
         label: "Expected skill names",
         language: "text",
-        code: `name: cyoda-app
-name: cyoda-build
-name: cyoda-setup
-name: cyoda-test`,
+        code: `name: app
+name: auth
+name: build
+name: setup
+name: test`,
       },
       {
         label: "Use explicitly",
@@ -102,7 +104,7 @@ name: cyoda-test`,
       {
         label: "Link local extension",
         language: "bash",
-        code: `git clone https://github.com/Cyoda-platform/cyoda-skills.git
+        code: `git clone https://github.com/Cyoda/cyoda-skills.git
 cd cyoda-skills/cyoda
 gemini extensions link .`,
       },
@@ -118,17 +120,17 @@ gemini extensions link .`,
     id: "cursor",
     label: "Cursor",
     description:
-      "Cursor can use Cyoda through project-level agent instructions.",
+      "Cursor can use the Cyoda skill files as project-level context.",
     steps: [
       {
-        label: "Add instructions (untested)",
+        label: "Get the skills locally (untested)",
         language: "bash",
-        code: "curl -L https://raw.githubusercontent.com/Cyoda-platform/cyoda-skills/main/AGENTS.md -o AGENTS.md",
+        code: "git clone https://github.com/Cyoda/cyoda-skills.git",
       },
       {
         label: "Then ask Cursor",
         language: "text",
-        code: "Read AGENTS.md, then build a minimal Cyoda app with an entity, workflow, criteria, processors and tests.",
+        code: "Read the SKILL.md files under cyoda-skills/cyoda/skills, then build a minimal Cyoda app with an entity, workflow, criteria, processors and tests.",
       },
     ],
     note: "This gives Cursor Cyoda-specific conventions and generation guidance. It is not the same as installing the Claude Code plugin.",
@@ -137,38 +139,38 @@ gemini extensions link .`,
     id: "windsurf",
     label: "Windsurf",
     description:
-      "Windsurf can use Cyoda through project-level agent instructions.",
+      "Windsurf can use the Cyoda skill files as project-level context.",
     steps: [
       {
-        label: "Add instructions (untested)",
+        label: "Get the skills locally (untested)",
         language: "bash",
-        code: "curl -L https://raw.githubusercontent.com/Cyoda-platform/cyoda-skills/main/AGENTS.md -o AGENTS.md",
+        code: "git clone https://github.com/Cyoda/cyoda-skills.git",
       },
       {
         label: "Then ask Windsurf Cascade",
         language: "text",
-        code: "Read AGENTS.md, then create a small Cyoda workflow application with one entity, criteria, processors and tests.",
+        code: "Read the SKILL.md files under cyoda-skills/cyoda/skills, then create a small Cyoda workflow application with one entity, criteria, processors and tests.",
       },
     ],
-    note: "This gives Windsurf Cyoda-specific coding guidance using the shared agent instruction file.",
+    note: "This gives Windsurf Cyoda-specific coding guidance from the shared skill files.",
   },
   {
     id: "github-copilot",
     label: "GitHub Copilot (untested)",
-    description: "GitHub Copilot can use repository instructions.",
+    description: "GitHub Copilot can use the Cyoda skill files as context.",
     steps: [
       {
-        label: "Add Copilot instructions",
+        label: "Get the skills locally",
         language: "bash",
-        code: "curl -L https://raw.githubusercontent.com/Cyoda-platform/cyoda-skills/main/AGENTS.md -o AGENTS.md",
+        code: "git clone https://github.com/Cyoda/cyoda-skills.git",
       },
       {
         label: "Then ask Copilot",
         language: "text",
-        code: "Use the repository instructions to build a minimal Cyoda app with entities, workflows, criteria and processors.",
+        code: "Read the SKILL.md files under cyoda-skills/cyoda/skills, then build a minimal Cyoda app with entities, workflows, criteria and processors.",
       },
     ],
-    note: "Copilot uses repository instructions as context. It does not install the Claude Code plugin directly.",
+    note: "Copilot uses the skill files as context. It does not install the Claude Code plugin directly.",
   },
   {
     id: "any-agent",
@@ -179,19 +181,14 @@ gemini extensions link .`,
       {
         label: "Point the agent at",
         language: "text",
-        code: "https://github.com/Cyoda-platform/cyoda-skills",
+        code: "https://github.com/Cyoda/cyoda-skills",
       },
       {
         label: "Ask it",
         language: "text",
-        code: "Read the Cyoda SKILL.md files, then generate a minimal Cyoda app with one entity, one workflow, criteria, processors and tests.",
-      },
-      {
-        label: "Optional project context",
-        language: "bash",
-        code: "curl -L https://raw.githubusercontent.com/Cyoda-platform/cyoda-skills/main/AGENTS.md -o AGENTS.md",
+        code: "Read the SKILL.md files under cyoda/skills, then generate a minimal Cyoda app with one entity, one workflow, criteria, processors and tests.",
       },
     ],
-    note: "For agents without native skill/plugin support, AGENTS.md is the safest portable option.",
+    note: "For agents without native skill/plugin support, reading the SKILL.md files directly is the portable option.",
   },
 ];

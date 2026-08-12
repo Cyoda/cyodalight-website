@@ -25,6 +25,5 @@ export const developerConsoleRelease = {
     demoMp4: '/media/dev-console/dev-console-demo.mp4',
     workflowEditor: '/media/dev-console/dev-console-workflow-editor.webp',
     sourceEditor: '/media/dev-console/dev-console-source-editor.webp',
-    runtimeConnection: '/media/dev-console/dev-console-runtime-connection.webp',
   },
 } as const;

@@ -1,11 +1,11 @@
 ---
 /**
- * ConsumptionModel — three ways to use Cyoda.
- * Run it yourself / Cyoda Cloud / Enterprise Cyoda
+ * ConsumptionModel — two ways to use Cyoda.
+ * Run it yourself / Enterprise Cyoda
  * Spec reference: section 14, section 23.
  *
  * Static CSS-rendered. No SVG required — pure HTML + CSS.
- * Reuses .progression layout. No arrows — three options are not sequential.
+ * Reuses .progression layout. No arrows — the options are not sequential.
  */
 import { site } from '../data/site';
 ---
@@ -17,7 +17,7 @@ import { site } from '../data/site';
 >
   <div class="container">
     <h2 class="section-heading" id="how-to-use-heading">
-      Three ways to use Cyoda
+      Two ways to use Cyoda
     </h2>
 
     <div class="progression">
@@ -43,25 +43,7 @@ import { site } from '../data/site';
           </div>
         </div>
 
-        <!-- Option 2: Cyoda Cloud -->
-        <div class="progression__stage progression__stage--highlight" role="listitem">
-          <div class="progression__stage-label">Cyoda Cloud</div>
-          <div class="progression__stage-title">Hosted SaaS</div>
-          <p class="progression__stage-desc">
-            Managed, hosted infrastructure. No binary to install,
-            no cluster to operate. Get started immediately.
-          </p>
-          <div class="progression__stage-cta">
-            <a
-              href={site.cyodaCloud}
-              class="btn btn--primary"
-            >
-              Try Cyoda Cloud &rarr;
-            </a>
-          </div>
-        </div>
-
-        <!-- Option 3: Enterprise Cyoda -->
+        <!-- Option 2: Enterprise Cyoda -->
         <div class="progression__stage" role="listitem">
           <div class="progression__stage-label">Enterprise Cyoda</div>
           <div class="progression__stage-title">Scalable deployment</div>

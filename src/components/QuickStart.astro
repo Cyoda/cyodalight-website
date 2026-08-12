@@ -32,7 +32,15 @@ import { developerConsoleRelease } from '../data/developerConsole';
         <ol class="quickstart__steps">
           <li>
             <strong>Install:</strong>
-            <code>brew install cyoda-platform/cyoda-go/cyoda</code>
+            <code>brew install cyoda/cyoda-go/cyoda</code>
+            &mdash; on Windows, download a signed binary from
+            <a href={site.githubReleases} target="_blank" rel="noopener noreferrer">
+              the releases page</a>.
+          </li>
+          <li>
+            <strong>Initialise:</strong>
+            <code>cyoda init</code>
+            sets up SQLite-backed local storage.
           </li>
           <li>
             <strong>Run:</strong>

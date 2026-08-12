@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://DOMAIN_PLACEHOLDER/sitemap.xml
+Sitemap: https://cyoda.dev/sitemap-index.xml
 
 User-agent: GPTBot
 Allow: /

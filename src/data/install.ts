@@ -16,7 +16,12 @@ export const installTabs: InstallTab[] = [
     label: "Install",
     language: "bash",
     code: `# macOS / Linux via Homebrew
-brew install cyoda-platform/cyoda-go/cyoda`,
+brew install cyoda/cyoda-go/cyoda
+
+# Initialise SQLite-backed local storage
+cyoda init
+
+# Windows: signed binaries (zip) on the GitHub releases page`,
   },
   {
     label: "Run",
@@ -44,7 +49,8 @@ curl http://localhost:8080/api/entity/$ENTITY_ID`,
   },
 ];
 
-export const localRunCommand = `brew install cyoda-platform/cyoda-go/cyoda
+export const localRunCommand = `brew install cyoda/cyoda-go/cyoda
+cyoda init
 cyoda`;
 
 export const firstEntityCommands = `# Import the entity workflow for the orders model.

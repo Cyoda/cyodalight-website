@@ -3,7 +3,8 @@
 > Cyoda is an open-source entity database management system (EDBMS) and workflow runtime.
 > Define entity types, enforce lifecycle transitions, and query temporal history.
 > Written in Go. Single binary. SQLite-backed local storage by default.
-> Client libraries for Java, Python, Go, and Kotlin via gRPC.
+> REST API for entities, search, and workflow operations; gRPC for external compute processors.
+> Java and Python client example/template projects available.
 > Apache 2.0 License. No sign-up required.
 
 ## Documentation
@@ -16,12 +17,10 @@
 
 ## Project
 
-- [GitHub Repository](https://github.com/Cyoda-platform/cyoda-go): Source code, issues, releases
-- [Developer Console](https://DOMAIN_PLACEHOLDER/dev-console): v0.3.0 desktop application for inspecting and correcting generated Cyoda workflow JSON locally, without a running Cyoda environment. Available on macOS and Linux; Windows can be built from source.
-- [Cyoda Cloud](https://ai.cyoda.net/): Hosted Cyoda
+- [GitHub Repository](https://github.com/Cyoda/cyoda-go): Source code, issues, releases
+- [Developer Console](https://cyoda.dev/dev-console): v0.3.0 desktop application for inspecting and correcting generated Cyoda workflow JSON locally, without a running Cyoda environment. Available on macOS and Linux; Windows can be built from source.
 - [Enterprise Cyoda](https://cyoda.com): Enterprise Cyoda
-- [Changelog](https://DOMAIN_PLACEHOLDER/changelog): Release history
 
 ## Optional
 
-- [Full Content](https://DOMAIN_PLACEHOLDER/llms-full.txt): Complete site content in plain markdown
+- [Full Content](https://cyoda.dev/llms-full.txt): Complete site content in plain markdown

@@ -221,7 +221,7 @@ async function fetchGitHubStars(): Promise<void> {
   const el = document.getElementById('github-star-count');
   if (!el) return;
 
-  const REPO = 'Cyoda-platform/cyoda-go';
+  const REPO = 'Cyoda/cyoda-go';
   const CACHE_KEY = 'cyoda-github-stars';
   const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
