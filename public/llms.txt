@@ -17,7 +17,7 @@
 ## Project
 
 - [GitHub Repository](https://github.com/Cyoda-platform/cyoda-go): Source code, issues, releases
-- [Developer Console](https://DOMAIN_PLACEHOLDER/dev-console): Optional v0.3.0 desktop companion for visually inspecting and editing Cyoda workflows on macOS Apple Silicon
+- [Developer Console](https://DOMAIN_PLACEHOLDER/dev-console): v0.3.0 desktop application for inspecting and correcting generated Cyoda workflow JSON locally, without a running Cyoda environment. Available on macOS and Linux; Windows can be built from source.
 - [Cyoda Cloud](https://ai.cyoda.net/): Hosted Cyoda
 - [Enterprise Cyoda](https://cyoda.com): Enterprise Cyoda
 - [Changelog](https://DOMAIN_PLACEHOLDER/changelog): Release history

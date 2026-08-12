@@ -53,9 +53,9 @@ import { developerConsoleRelease } from '../data/developerConsole';
         <div class="quickstart__optional">
           <h3>Optional: install Cyoda Developer Console</h3>
           <p>
-            Cyoda Developer Console is a desktop companion for
-            visually inspecting and editing workflows. It is optional and
-            currently available for macOS Apple Silicon.
+            Cyoda Developer Console works with local workflow files during the
+            build phase, without a running Cyoda environment. It is available on
+            macOS and Linux; Windows can be built from source.
           </p>
           <CodeBlock
             code={developerConsoleRelease.brewCommand}
@@ -64,20 +64,20 @@ import { developerConsoleRelease } from '../data/developerConsole';
             analyticsEvent="dev_console_brew_copy"
             analyticsSource="docs"
             analyticsVersion="0.3.0"
-            analyticsPlatform="macos_apple_silicon"
+            analyticsPlatform="macos"
             analyticsAsset="brew"
           />
           <a
-            href={developerConsoleRelease.dmgUrl}
+            href={developerConsoleRelease.releasesUrl}
             class="quickstart__link"
-            aria-label="Download the v0.3.0 Apple Silicon DMG for Cyoda Developer Console"
-            data-analytics-event="dev_console_dmg_download_click"
+            aria-label="View Cyoda Developer Console v0.3.0 downloads"
+            data-analytics-event="dev_console_downloads_click"
             data-analytics-source="docs"
             data-analytics-version="0.3.0"
-            data-analytics-platform="macos_apple_silicon"
-            data-analytics-asset="dmg"
-          >
-            &rarr; Download the v0.3.0 Apple Silicon DMG
+            data-analytics-platform="macos_linux"
+            data-analytics-asset="release"
+            >
+            &rarr; View macOS and Linux downloads
           </a>
           <a href={developerConsoleRelease.pagePath} class="quickstart__link">
             &rarr; Learn more about Developer Console

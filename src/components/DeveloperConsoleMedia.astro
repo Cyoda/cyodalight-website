@@ -24,15 +24,15 @@ const { label, description, variant = 'wide' } = Astro.props;
   <div
     class="dev-console-media__display"
     role="img"
-    aria-label="Cyoda Console displaying a read-only treasury repo workflow with automatic and manual transitions."
+    aria-label="Example workflow display for a treasury repo lifecycle with automatic and manual transitions."
   >
     <div class="dev-console-media__toolbar" aria-hidden="true">
       <div class="dev-console-media__identity">
         <span class="dev-console-media__mark">C</span>
-        <span>Cyoda Console</span>
+        <span>Cyoda workflow</span>
         <span class="dev-console-media__mode">Display</span>
       </div>
-      <span class="dev-console-media__readonly">Read only</span>
+      <span class="dev-console-media__readonly">Example</span>
     </div>
     <div class="dev-console-media__workflow">
       <WorkflowDisplay client:only="react" workflowJson={treasuryRepoWorkflow} compact />

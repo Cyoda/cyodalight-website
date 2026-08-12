@@ -9,7 +9,7 @@ interface WorkflowDisplayProps {
   compact?: boolean;
 }
 
-/** The current console's lightweight, read-only workflow display. */
+/** Lightweight, read-only workflow display used in the website example. */
 export default function WorkflowDisplay({ workflowJson, className, compact = false }: WorkflowDisplayProps) {
   const parsed = useMemo(() => parseImportPayload(workflowJson), [workflowJson]);
   const layout = useMemo<LayoutResult | undefined>(() => {
