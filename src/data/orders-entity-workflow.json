@@ -1,0 +1,21 @@
+{
+  "importMode": "REPLACE",
+  "workflows": [
+    {
+      "version": "1",
+      "name": "orders-wf",
+      "initialState": "draft",
+      "active": true,
+      "states": {
+        "draft": {
+          "transitions": [
+            { "name": "submit", "next": "submitted", "manual": true }
+          ]
+        },
+        "submitted": {
+          "transitions": []
+        }
+      }
+    }
+  ]
+}

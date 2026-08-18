@@ -1,4 +1,4 @@
-Last updated: 2026-04-27
+Last updated: 2026-08-17
 
 # Cyoda — Complete Site Content
 
@@ -128,6 +128,35 @@ curl http://localhost:8080/api/entity/$ENTITY_ID
 
 The homepage intentionally stays compact. Use the docs for the full explanation, schema, processors, criteria, deployment options, and API reference.
 
+## Use Cyoda With an AI Coding Agent
+
+Cyoda ships agent skills that help AI coding tools generate Cyoda applications using the right project structure, entity models, workflow definitions, criteria, processors, and tests. Skills source: https://github.com/Cyoda/cyoda-skills
+
+**Claude Code** (best supported): install the plugin from the Cyoda skills marketplace, then start building.
+```
+/plugin marketplace add Cyoda-platform/cyoda-skills
+/plugin install cyoda@cyoda
+/reload-plugins
+```
+Start with `/cyoda:app`. Other commands: `/cyoda:setup`, `/cyoda:auth`, `/cyoda:design`, `/cyoda:build`, `/cyoda:compute`, `/cyoda:test`, `/cyoda:debug`, `/cyoda:migrate`, `/cyoda:docs`, `/cyoda:status`.
+
+**Codex**: use Cyoda skills from its local agent skills directory.
+```
+git clone https://github.com/Cyoda/cyoda-skills.git
+mkdir -p ~/.agents/skills
+cp -R cyoda-skills/cyoda/skills/* ~/.agents/skills/
+```
+Restart Codex after installing or updating the skills. Codex should automatically use the relevant skill when the request matches its description; if not, open the cloned repo and ask Codex to read the relevant `SKILL.md` files directly.
+
+**Gemini CLI**: link the skills repo as a Gemini extension.
+```
+git clone https://github.com/Cyoda/cyoda-skills.git
+cd cyoda-skills/cyoda
+gemini extensions link .
+```
+
+**Any agent** (portable option): point the agent at https://github.com/Cyoda/cyoda-skills and ask it to read the `SKILL.md` files under `cyoda/skills`, then generate a minimal Cyoda app with one entity, one workflow, criteria, processors, and tests. This is the fallback for agents without native skill or plugin support.
+
 ## FAQ
 
 **What is Cyoda?**
@@ -146,7 +175,7 @@ Systems where entities change state over time and where the history of those cha
 SQLite-backed local storage is the default for a fresh local install. In-memory mode stores entity state in process memory and resets when the process stops, which is useful for fast functional tests. PostgreSQL stores entity state durably for service deployments that need an external database.
 
 **What is the difference between Run it yourself and Enterprise Cyoda?**
-Run it yourself: install the open-source binary and run Cyoda on your own machine or infrastructure. Free, Apache 2.0, no account required. Enterprise Cyoda (cyoda.com): larger-scale deployment with enterprise support, SLA, and dedicated engagement.
+Run it yourself is the open-source path: install the Apache 2.0 binary and run Cyoda on your own infrastructure at no cost, with no account required. Enterprise Cyoda (cyoda.com) adds SLA-backed support and dedicated engagement for teams running at production scale. Both use the identical core API and entity model, so code written against one runs unchanged against the other.
 
 **What languages are supported?**
 Any language with an HTTP client can use the REST API for entities, search, and workflow operations. External compute processors connect over gRPC. Java and Python client example/template projects are available to get started quickly.

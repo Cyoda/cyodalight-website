@@ -48,7 +48,7 @@ export const faqItems: FaqItem[] = [
   {
     question: 'What is the difference between Run it yourself and Enterprise Cyoda?',
     answer:
-      'Run it yourself: install the open-source binary and run Cyoda on your own machine or infrastructure. Free, Apache 2.0, no account required. Enterprise Cyoda: larger-scale deployment with enterprise support, SLA, and dedicated engagement for organisations with advanced operational requirements. Both options share the same core API and entity model.',
+      'Run it yourself is the open-source path: install the Apache 2.0 binary and run Cyoda on your own infrastructure at no cost, with no account required. Enterprise Cyoda adds SLA-backed support and dedicated engagement for teams running at production scale. Both use the identical core API and entity model, so code written against one runs unchanged against the other.',
   },
   {
     question: 'What languages are supported?',

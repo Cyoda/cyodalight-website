@@ -1237,7 +1237,7 @@ samp {
 }
 
 .dev-console-media__workflow {
-  height: 280px;
+  height: 300px;
   overflow: hidden;
   background:
     radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.2) 1px, transparent 0),

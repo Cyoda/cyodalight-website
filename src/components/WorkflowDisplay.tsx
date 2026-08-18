@@ -18,11 +18,16 @@ export default function WorkflowDisplay({ workflowJson, className, compact = fal
     const positions = new Map<string, { id: string; x: number; y: number; width: number; height: number }>();
     const coordinates: Record<string, [number, number]> = {
       INITIATED: [0, 0],
-      VALIDATING: [208, 0],
-      REVIEW: [416, 0],
-      SETTLEMENT: [624, 0],
-      EXCEPTION: [312, 160],
-      SETTLED: [624, 160],
+      VALIDATING: [232, 0],
+      REVIEW: [464, 0],
+      SETTLEMENT: [696, 0],
+      EXCEPTION: [348, 192],
+      // SETTLED sits right of straight-below SETTLEMENT: with 4 transitions meeting at
+      // SETTLEMENT's bottom edge (stp/approve in, settle/failed out), the router's
+      // handle-splitting sends "settle" out via a dog-leg that swings further right
+      // than the canvas's own padding covers, clipping the line at the card edge.
+      // The offset gives that dog-leg room without changing any node's rendered size.
+      SETTLED: [800, 192],
     };
 
     for (const [id, pointer] of Object.entries(parsed.document.meta.ids.states)) {
@@ -30,7 +35,7 @@ export default function WorkflowDisplay({ workflowJson, className, compact = fal
       positions.set(id, { id, x, y, width: 144, height: 72 });
     }
 
-    return { positions, width: 768, height: 232 };
+    return { positions, width: 944, height: 264 };
   }, [compact, parsed.document]);
 
   if (!parsed.document) {

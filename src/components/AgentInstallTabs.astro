@@ -23,15 +23,6 @@ const panelId = 'agent-install';
           entities, workflows, criteria, processors, testing and local development
           conventions.
         </p>
-        <p class="agent-install__intro">
-          Cyoda ships agent skills that help AI coding tools generate Cyoda
-          applications using the right project structure, entity models, workflow
-          definitions, criteria, processors and tests. Choose your coding agent below.
-        </p>
-        <p class="agent-install__support-copy">
-          Different agents support skills and instructions differently. Choose the
-          tab for your agent.
-        </p>
       </div>
 
       <div class="agent-install-tabs install-panel" data-install-panel>
@@ -98,13 +89,6 @@ const panelId = 'agent-install';
       </div>
 
       <div class="agent-install__footer">
-        <p class="agent-install__bottom-note">
-          Different agents use different extension mechanisms. Claude Code uses a
-          plugin marketplace, Codex and Gemini can use skill or extension wrappers,
-          and IDE agents can read the <code>SKILL.md</code> files directly as
-          project context.
-        </p>
-
         <div class="agent-install__links">
           <a
             href={site.skillsRepo}
@@ -113,9 +97,6 @@ const panelId = 'agent-install';
             rel="noopener noreferrer"
           >
             &rarr; View skills on GitHub
-          </a>
-          <a href="#install-get-started" class="quickstart__link">
-            &rarr; Start with a minimal Cyoda app
           </a>
         </div>
       </div>

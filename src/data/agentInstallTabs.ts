@@ -48,7 +48,6 @@ export const agentInstallTabs: AgentInstallTab[] = [
 /cyoda:status`,
       },
     ],
-    note: "If you are using a local development copy of the marketplace, the marketplace name may differ. The public marketplace should use cyoda.",
   },
   {
     id: "codex",
@@ -115,62 +114,6 @@ gemini extensions link .`,
       },
     ],
     note: "If the gemini extension wrapper is not present in your checkout yet, point Gemini at the Cyoda skills repository and ask it to read the relevant SKILL.md files.",
-  },
-  {
-    id: "cursor",
-    label: "Cursor",
-    description:
-      "Cursor can use the Cyoda skill files as project-level context.",
-    steps: [
-      {
-        label: "Get the skills locally (untested)",
-        language: "bash",
-        code: "git clone https://github.com/Cyoda/cyoda-skills.git",
-      },
-      {
-        label: "Then ask Cursor",
-        language: "text",
-        code: "Read the SKILL.md files under cyoda-skills/cyoda/skills, then build a minimal Cyoda app with an entity, workflow, criteria, processors and tests.",
-      },
-    ],
-    note: "This gives Cursor Cyoda-specific conventions and generation guidance. It is not the same as installing the Claude Code plugin.",
-  },
-  {
-    id: "windsurf",
-    label: "Windsurf",
-    description:
-      "Windsurf can use the Cyoda skill files as project-level context.",
-    steps: [
-      {
-        label: "Get the skills locally (untested)",
-        language: "bash",
-        code: "git clone https://github.com/Cyoda/cyoda-skills.git",
-      },
-      {
-        label: "Then ask Windsurf Cascade",
-        language: "text",
-        code: "Read the SKILL.md files under cyoda-skills/cyoda/skills, then create a small Cyoda workflow application with one entity, criteria, processors and tests.",
-      },
-    ],
-    note: "This gives Windsurf Cyoda-specific coding guidance from the shared skill files.",
-  },
-  {
-    id: "github-copilot",
-    label: "GitHub Copilot (untested)",
-    description: "GitHub Copilot can use the Cyoda skill files as context.",
-    steps: [
-      {
-        label: "Get the skills locally",
-        language: "bash",
-        code: "git clone https://github.com/Cyoda/cyoda-skills.git",
-      },
-      {
-        label: "Then ask Copilot",
-        language: "text",
-        code: "Read the SKILL.md files under cyoda-skills/cyoda/skills, then build a minimal Cyoda app with entities, workflows, criteria and processors.",
-      },
-    ],
-    note: "Copilot uses the skill files as context. It does not install the Claude Code plugin directly.",
   },
   {
     id: "any-agent",

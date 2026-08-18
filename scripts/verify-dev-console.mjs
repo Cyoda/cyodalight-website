@@ -58,15 +58,15 @@ assertIncludes(homepage, 'What Cyoda is', 'homepage');
 const agentIndex = homepage.indexOf('Use Cyoda with your AI coding agent');
 const consoleIndex = homepage.indexOf('Generate with AI. Refine the workflow visually.');
 const whatIndex = homepage.indexOf('What Cyoda is');
-if (!(agentIndex < consoleIndex && consoleIndex < whatIndex)) {
-  fail('homepage Developer Console section is not after AI agent and before What Cyoda is');
+if (!(whatIndex < agentIndex && agentIndex < consoleIndex)) {
+  fail('homepage section order is wrong: expected What Cyoda is, then AI agent install, then Developer Console');
 }
 
 assertIncludes(homepage, 'One model for entity state, workflows, events, and transactions.', 'homepage hero');
-assertIncludes(homepage, 'Three ways to use Cyoda', 'homepage');
+assertIncludes(homepage, 'Two ways to use Cyoda', 'homepage');
 assertIncludes(homepage, '/dev-console', 'homepage');
 assertIncludes(homepage, exact.releasesUrl, 'homepage');
-assertIncludes(homepage, 'Works with local workflow files', 'homepage');
+assertIncludes(homepage, 'local workflow files without a running Cyoda environment', 'homepage');
 assertIncludes(homepage, 'v0.3.0', 'homepage');
 assertIncludes(homepage, 'Latest', 'homepage');
 
