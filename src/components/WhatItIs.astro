@@ -8,116 +8,263 @@
  */
 ---
 
-<section
-  class="section"
-  id="what-it-is"
-  aria-labelledby="what-it-is-heading"
->
-  <div class="container">
-    <div class="two-col">
-      <!-- Prose -->
-      <div>
-        <h2 class="section-heading" id="what-it-is-heading">What Cyoda is</h2>
+<section class="section" id="what-it-is" aria-labelledby="what-it-is-heading">
+    <div class="container">
+        <div class="two-col">
+            <!-- Prose -->
+            <div>
+                <h2 class="section-heading" id="what-it-is-heading">
+                    What Cyoda is
+                </h2>
 
-        <div class="prose">
-          <p>
-            Cyoda is an EDBMS — an entity database management system — that
-            runs transactional entity lifecycle management, state-machine
-            workflows, event-driven processing, and temporal auditability as
-            one integrated runtime.
-          </p>
+                <div class="prose">
+                    <p>
+                        Cyoda is an entity database management system (EDBMS)
+                        built around stateful business entities rather than
+                        passive database records. An entity's lifecycle,
+                        permitted transitions, event responses, and history are
+                        part of the model itself, making application behaviour
+                        explicit, enforceable, and queryable.
+                    </p>
 
-          <p>
-            Standard backend stacks require separate systems for each: a
-            workflow engine, an event bus, a state table, an audit log, and
-            application code to stitch them together. Every seam is a source
-            of inconsistency, hidden state, and debugging difficulty. Cyoda
-            replaces that stack. Entity state, valid transitions, event triggers,
-            and business rules are declared once, enforced consistently, and
-            recorded automatically.
-          </p>
+                    <p>
+                        Standard backend stacks require separate systems for
+                        each: a workflow engine, an event bus, a state table, an
+                        audit log, and application code to stitch them together.
+                        Every seam is a source of inconsistency, hidden state,
+                        and debugging difficulty. Cyoda replaces that stack.
+                        Entity state, valid transitions, event triggers, and
+                        business rules are declared once, enforced consistently,
+                        and recorded automatically.
+                    </p>
 
-          <p>
-            The explicit structure matters beyond compliance. When workflow
-            logic, entity state, and event flow are visible and queryable in
-            one model, both engineers and AI tools can reason about system
-            behavior precisely. The system stays comprehensible as it grows,
-            not in spite of growth, but because the model enforces clarity.
-          </p>
-        </div>
-      </div>
+                    <p>
+                        The explicit structure matters beyond compliance. When
+                        workflow logic, entity state, and event flow are visible
+                        and queryable in one model, both engineers and AI tools
+                        can reason about system behavior precisely. The system
+                        stays comprehensible as it grows, not in spite of
+                        growth, but because the model enforces clarity.
+                    </p>
+                </div>
+            </div>
 
-      <!-- Architecture SVG diagram -->
-      <!--
+            <!-- Architecture SVG diagram -->
+            <!--
         Spec section 11: "Static inline SVG. Dark text on light background."
         Spec defines the exact structure and labels.
       -->
-      <div class="what-it-is__diagram">
-        <svg
-          viewBox="0 0 380 344"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-labelledby="arch-diagram-title"
-          width="380"
-          height="344"
-          style="max-width:100%;height:auto;font-family:var(--font-mono)"
-        >
-          <title id="arch-diagram-title">
-            Cyoda architecture: your application connects via REST to Cyoda,
-            which runs Entity Lifecycle, Workflow FSM, Event-Driven Processing,
-            and Audit Log and History as one integrated model. Cyoda connects
-            to in-memory or durable storage.
-          </title>
+            <div class="what-it-is__diagram">
+                <svg
+                    viewBox="0 0 380 344"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-labelledby="arch-diagram-title"
+                    width="380"
+                    height="344"
+                    style="max-width:100%;height:auto;font-family:var(--font-mono)"
+                >
+                    <title id="arch-diagram-title">
+                        Cyoda architecture: your application connects via REST
+                        to Cyoda, which runs Entity Lifecycle, Workflow FSM,
+                        Event-Driven Processing, and Audit Log and History as
+                        one integrated model. Cyoda connects to in-memory or
+                        durable storage.
+                    </title>
 
-          <!-- Background -->
-          <rect width="380" height="344" rx="12" fill="#f1f5f9"/>
-          <rect x="1" y="1" width="378" height="342" rx="11" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+                    <!-- Background -->
+                    <rect width="380" height="344" rx="12" fill="#f1f5f9"
+                    ></rect>
+                    <rect
+                        x="1"
+                        y="1"
+                        width="378"
+                        height="342"
+                        rx="11"
+                        fill="none"
+                        stroke="#e2e8f0"
+                        stroke-width="1"></rect>
 
-          <!-- "Your Application Code" box -->
-          <rect x="100" y="20" width="180" height="40" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
-          <text x="190" y="45" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="600">Your Application Code</text>
+                    <!-- "Your Application Code" box -->
+                    <rect
+                        x="100"
+                        y="20"
+                        width="180"
+                        height="40"
+                        rx="6"
+                        fill="#fff"
+                        stroke="#e2e8f0"
+                        stroke-width="1.5"></rect>
+                    <text
+                        x="190"
+                        y="45"
+                        text-anchor="middle"
+                        font-size="13"
+                        fill="#0f172a"
+                        font-weight="600">Your Application Code</text
+                    >
 
-          <!-- Arrow down -->
-          <line x1="190" y1="60" x2="190" y2="80" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-          <text x="205" y="75" font-size="11" fill="#475569">REST</text>
+                    <!-- Arrow down -->
+                    <line
+                        x1="190"
+                        y1="60"
+                        x2="190"
+                        y2="80"
+                        stroke="#94a3b8"
+                        stroke-width="1.5"
+                        marker-end="url(#arrowhead)"></line>
+                    <text x="205" y="75" font-size="11" fill="#475569"
+                        >REST</text
+                    >
 
-          <!-- Cyoda runtime box — 4 inner rows -->
-          <rect x="60" y="80" width="260" height="166" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
-          <text x="190" y="100" text-anchor="middle" font-size="12" fill="#475569" font-weight="500">Cyoda</text>
+                    <!-- Cyoda runtime box — 4 inner rows -->
+                    <rect
+                        x="60"
+                        y="80"
+                        width="260"
+                        height="166"
+                        rx="8"
+                        fill="#fff"
+                        stroke="#2563eb"
+                        stroke-width="1.5"></rect>
+                    <text
+                        x="190"
+                        y="100"
+                        text-anchor="middle"
+                        font-size="12"
+                        fill="#475569"
+                        font-weight="500">Cyoda</text
+                    >
 
-          <!-- Row 1: Entity Lifecycle -->
-          <rect x="80" y="108" width="220" height="26" rx="4" fill="#eff6ff" stroke="#e2e8f0" stroke-width="1"/>
-          <text x="190" y="125" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="500">Entity Lifecycle</text>
+                    <!-- Row 1: Entity Lifecycle -->
+                    <rect
+                        x="80"
+                        y="108"
+                        width="220"
+                        height="26"
+                        rx="4"
+                        fill="#eff6ff"
+                        stroke="#e2e8f0"
+                        stroke-width="1"></rect>
+                    <text
+                        x="190"
+                        y="125"
+                        text-anchor="middle"
+                        font-size="12"
+                        fill="#1e40af"
+                        font-weight="500">Entity Lifecycle</text
+                    >
 
-          <!-- Row 2: Workflow FSM -->
-          <rect x="80" y="138" width="220" height="26" rx="4" fill="#eff6ff" stroke="#e2e8f0" stroke-width="1"/>
-          <text x="190" y="155" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="500">Workflow FSM</text>
+                    <!-- Row 2: Workflow FSM -->
+                    <rect
+                        x="80"
+                        y="138"
+                        width="220"
+                        height="26"
+                        rx="4"
+                        fill="#eff6ff"
+                        stroke="#e2e8f0"
+                        stroke-width="1"></rect>
+                    <text
+                        x="190"
+                        y="155"
+                        text-anchor="middle"
+                        font-size="12"
+                        fill="#1e40af"
+                        font-weight="500">Workflow FSM</text
+                    >
 
-          <!-- Row 3: Event-Driven Processing -->
-          <rect x="80" y="168" width="220" height="26" rx="4" fill="#eff6ff" stroke="#e2e8f0" stroke-width="1"/>
-          <text x="190" y="185" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="500">Event-Driven Processing</text>
+                    <!-- Row 3: Event-Driven Processing -->
+                    <rect
+                        x="80"
+                        y="168"
+                        width="220"
+                        height="26"
+                        rx="4"
+                        fill="#eff6ff"
+                        stroke="#e2e8f0"
+                        stroke-width="1"></rect>
+                    <text
+                        x="190"
+                        y="185"
+                        text-anchor="middle"
+                        font-size="12"
+                        fill="#1e40af"
+                        font-weight="500">Event-Driven Processing</text
+                    >
 
-          <!-- Row 4: Audit Log & History -->
-          <rect x="80" y="198" width="220" height="26" rx="4" fill="#eff6ff" stroke="#e2e8f0" stroke-width="1"/>
-          <text x="190" y="215" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="500">Audit Log &amp; History</text>
+                    <!-- Row 4: Audit Log & History -->
+                    <rect
+                        x="80"
+                        y="198"
+                        width="220"
+                        height="26"
+                        rx="4"
+                        fill="#eff6ff"
+                        stroke="#e2e8f0"
+                        stroke-width="1"></rect>
+                    <text
+                        x="190"
+                        y="215"
+                        text-anchor="middle"
+                        font-size="12"
+                        fill="#1e40af"
+                        font-weight="500">Audit Log &amp; History</text
+                    >
 
-          <!-- Arrow down -->
-          <line x1="190" y1="246" x2="190" y2="266" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                    <!-- Arrow down -->
+                    <line
+                        x1="190"
+                        y1="246"
+                        x2="190"
+                        y2="266"
+                        stroke="#94a3b8"
+                        stroke-width="1.5"
+                        marker-end="url(#arrowhead)"></line>
 
-          <!-- Storage box: single summary, full progression owned by GrowthPath -->
-          <rect x="60" y="266" width="260" height="56" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
+                    <!-- Storage box: single summary, full progression owned by GrowthPath -->
+                    <rect
+                        x="60"
+                        y="266"
+                        width="260"
+                        height="56"
+                        rx="8"
+                        fill="#fff"
+                        stroke="#e2e8f0"
+                        stroke-width="1.5"></rect>
 
-          <text x="190" y="290" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="600">Storage</text>
-          <text x="190" y="308" text-anchor="middle" font-size="10" fill="#475569">In-memory or durable storage</text>
+                    <text
+                        x="190"
+                        y="290"
+                        text-anchor="middle"
+                        font-size="13"
+                        fill="#0f172a"
+                        font-weight="600">Storage</text
+                    >
+                    <text
+                        x="190"
+                        y="308"
+                        text-anchor="middle"
+                        font-size="10"
+                        fill="#475569">In-memory or durable storage</text
+                    >
 
-          <!-- Arrowhead marker -->
-          <defs>
-            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
-            </marker>
-          </defs>
-        </svg>
-      </div>
+                    <!-- Arrowhead marker -->
+                    <defs>
+                        <marker
+                            id="arrowhead"
+                            markerWidth="8"
+                            markerHeight="6"
+                            refX="7"
+                            refY="3"
+                            orient="auto"
+                        >
+                            <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"
+                            ></polygon>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
