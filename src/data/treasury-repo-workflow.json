@@ -1,0 +1,51 @@
+{
+  "importMode": "REPLACE",
+  "workflows": [
+    {
+      "version": "1",
+      "name": "TreasuryRepoLifecycle",
+      "initialState": "INITIATED",
+      "active": true,
+      "states": {
+        "INITIATED": {
+          "transitions": [
+            { "name": "validate", "next": "VALIDATING", "manual": false, "disabled": false }
+          ]
+        },
+        "VALIDATING": {
+          "transitions": [
+            {
+              "name": "stp",
+              "next": "SETTLEMENT",
+              "manual": false,
+              "disabled": false
+            },
+            { "name": "escalate", "next": "REVIEW", "manual": true, "disabled": false }
+          ]
+        },
+        "REVIEW": {
+          "transitions": [
+            { "name": "approve", "next": "SETTLEMENT", "manual": true, "disabled": false }
+          ]
+        },
+        "SETTLEMENT": {
+          "transitions": [
+            {
+              "name": "settle",
+              "next": "SETTLED",
+              "manual": false,
+              "disabled": false
+            },
+            { "name": "failed", "next": "EXCEPTION", "manual": false, "disabled": false }
+          ]
+        },
+        "EXCEPTION": {
+          "transitions": [
+            { "name": "repair", "next": "VALIDATING", "manual": true, "disabled": false }
+          ]
+        },
+        "SETTLED": { "transitions": [] }
+      }
+    }
+  ]
+}

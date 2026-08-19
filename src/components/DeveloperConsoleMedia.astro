@@ -1,0 +1,49 @@
+---
+import { developerConsoleRelease } from '../data/developerConsole';
+import WorkflowDisplay from './WorkflowDisplay';
+import treasuryRepoWorkflow from '../data/treasury-repo-workflow.json?raw';
+
+interface Props {
+  label: string;
+  description: string;
+  variant?: 'compact' | 'wide';
+}
+
+const { label, description, variant = 'wide' } = Astro.props;
+---
+
+<figure
+  class:list={[
+    'dev-console-media',
+    variant === 'compact' && 'dev-console-media--compact',
+  ]}
+  data-expected-poster={developerConsoleRelease.media.poster}
+  data-expected-video-webm={developerConsoleRelease.media.demoWebm}
+  data-expected-video-mp4={developerConsoleRelease.media.demoMp4}
+>
+  <div
+    class="dev-console-media__display"
+    role="img"
+    aria-label="Example workflow display for a treasury repo lifecycle with automatic and manual transitions."
+  >
+    <div class="dev-console-media__toolbar" aria-hidden="true">
+      <div class="dev-console-media__identity">
+        <span class="dev-console-media__mark">C</span>
+        <span>Cyoda workflow</span>
+        <span class="dev-console-media__mode">Display</span>
+      </div>
+      <span class="dev-console-media__readonly">Example</span>
+    </div>
+    <div class="dev-console-media__workflow">
+      <WorkflowDisplay client:only="react" workflowJson={treasuryRepoWorkflow} compact />
+    </div>
+    <div class="dev-console-media__legend" aria-hidden="true">
+      <span><i class="dev-console-media__legend-line"></i>STP / automatic</span>
+      <span><i class="dev-console-media__legend-line dev-console-media__legend-line--manual"></i>Manual</span>
+    </div>
+    <figcaption class="dev-console-media__caption">
+      <strong>{label}</strong>
+      <span>{description}</span>
+    </figcaption>
+  </div>
+</figure>

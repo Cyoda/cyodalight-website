@@ -1,4 +1,4 @@
-Last updated: 2026-04-27
+Last updated: 2026-08-17
 
 # Cyoda — Complete Site Content
 
@@ -18,24 +18,20 @@ An entity database management system (EDBMS) is a runtime that manages the full 
 - **Lifecycle enforcement**: Finite state machine engine. Invalid transitions are rejected at the API boundary — no defensive code required in your application.
 - **Temporal history**: Every state change is recorded. Query the exact state of any entity at any point in time.
 - **Immutable audit trail**: Non-modifiable record of all transitions: what changed, from which state, to which state, and when.
-- **In-memory mode**: Zero external dependencies. Starts in under 2 seconds. Resets cleanly between test runs.
+- **In-memory mode**: Zero external dependencies. Resets cleanly between test runs.
 - **PostgreSQL mode**: Durable, transactional entity storage. State persists across restarts for local integration testing.
-- **gRPC API**: Language-agnostic API surface. Client libraries for Java, Python, Go, and Kotlin. Any gRPC-capable language works.
-- **Test harness**: Reset entity state between tests with a single API call. No teardown scripts, no manual cleanup.
+- **REST and gRPC APIs**: REST for entity CRUD, search, and workflow invocation — any language with an HTTP client works. gRPC connects external compute processors.
+- **State reset**: Delete all entities of a model with a single API call (`DELETE /api/entity/{entityName}/{modelVersion}`), useful for resetting state between test runs.
 
 ## Supported Languages
 
-Java, Python, Go, and Kotlin via gRPC client libraries. Any language with a gRPC implementation can connect to the Cyoda API directly.
+Any language with an HTTP client can use the REST API for entities, search, and workflow operations. External compute processors connect over gRPC. Java and Python client example/template projects are available to get started quickly.
 
-## Three Ways to Use Cyoda
+## Two Ways to Use Cyoda
 
 ### Run it yourself
 Install the open-source binary and run Cyoda on your own machine or infrastructure. Local development, self-hosting, and experimentation. Free, Apache 2.0, no account required.
 Install guide: https://docs.cyoda.net/getting-started/install-and-first-entity/
-
-### Cyoda Cloud
-The hosted SaaS option. Managed infrastructure, no cluster to operate. Get started immediately without installation.
-URL: https://ai.cyoda.net/
 
 ### Enterprise Cyoda
 Larger-scale infrastructure with enterprise support, SLA, and dedicated engagement for organisations with advanced operational requirements.
@@ -47,7 +43,10 @@ Use the canonical local developer flow from the docs:
 
 ```bash
 # macOS / Linux via Homebrew
-brew install cyoda-platform/cyoda-go/cyoda
+brew install cyoda/cyoda-go/cyoda
+
+# Windows: signed binaries (zip) are published on the GitHub releases page:
+# https://github.com/Cyoda/cyoda-go/releases
 
 # If your installer did not initialise local storage:
 cyoda init
@@ -60,6 +59,35 @@ cyoda
 # HTTP API: http://localhost:8080
 # Local default auth is mock auth; no bearer token required.
 ```
+
+### Optional: Cyoda Developer Console
+
+Cyoda Developer Console is a desktop application for inspecting and correcting
+generated workflow JSON during the build phase. It works with local workflow
+files and does not require a running Cyoda environment.
+
+It is available on macOS (Apple Silicon and Intel) and Linux (ARM64 and
+x86_64). Windows can be built from source; no prebuilt Windows binary is
+published.
+
+Install on macOS:
+
+```bash
+brew install --cask cyoda/cyoda/cyoda-dev-console
+```
+
+Download a Linux AppImage for your architecture:
+
+- ARM64: https://github.com/cyoda/cyoda-dev-console/releases/download/v0.3.0/cyoda-dev-console_0.3.0_aarch64.AppImage
+- x86_64: https://github.com/cyoda/cyoda-dev-console/releases/download/v0.3.0/cyoda-dev-console_0.3.0_amd64.AppImage
+
+Mark the downloaded AppImage executable, then run it.
+
+Downloads and Windows build instructions:
+https://github.com/cyoda/cyoda-dev-console/releases
+https://github.com/cyoda/cyoda-dev-console/blob/main/RELEASE.md#build-from-source-on-windows
+
+Learn more: https://cyoda.dev/dev-console
 
 Import a minimal entity workflow for model `orders`, version `1`:
 
@@ -100,6 +128,35 @@ curl http://localhost:8080/api/entity/$ENTITY_ID
 
 The homepage intentionally stays compact. Use the docs for the full explanation, schema, processors, criteria, deployment options, and API reference.
 
+## Use Cyoda With an AI Coding Agent
+
+Cyoda ships agent skills that help AI coding tools generate Cyoda applications using the right project structure, entity models, workflow definitions, criteria, processors, and tests. Skills source: https://github.com/Cyoda/cyoda-skills
+
+**Claude Code** (best supported): install the plugin from the Cyoda skills marketplace, then start building.
+```
+/plugin marketplace add Cyoda-platform/cyoda-skills
+/plugin install cyoda@cyoda
+/reload-plugins
+```
+Start with `/cyoda:app`. Other commands: `/cyoda:setup`, `/cyoda:auth`, `/cyoda:design`, `/cyoda:build`, `/cyoda:compute`, `/cyoda:test`, `/cyoda:debug`, `/cyoda:migrate`, `/cyoda:docs`, `/cyoda:status`.
+
+**Codex**: use Cyoda skills from its local agent skills directory.
+```
+git clone https://github.com/Cyoda/cyoda-skills.git
+mkdir -p ~/.agents/skills
+cp -R cyoda-skills/cyoda/skills/* ~/.agents/skills/
+```
+Restart Codex after installing or updating the skills. Codex should automatically use the relevant skill when the request matches its description; if not, open the cloned repo and ask Codex to read the relevant `SKILL.md` files directly.
+
+**Gemini CLI**: link the skills repo as a Gemini extension.
+```
+git clone https://github.com/Cyoda/cyoda-skills.git
+cd cyoda-skills/cyoda
+gemini extensions link .
+```
+
+**Any agent** (portable option): point the agent at https://github.com/Cyoda/cyoda-skills and ask it to read the `SKILL.md` files under `cyoda/skills`, then generate a minimal Cyoda app with one entity, one workflow, criteria, processors, and tests. This is the fallback for agents without native skill or plugin support.
+
 ## FAQ
 
 **What is Cyoda?**
@@ -117,25 +174,25 @@ Systems where entities change state over time and where the history of those cha
 **What is the difference between in-memory and PostgreSQL mode?**
 SQLite-backed local storage is the default for a fresh local install. In-memory mode stores entity state in process memory and resets when the process stops, which is useful for fast functional tests. PostgreSQL stores entity state durably for service deployments that need an external database.
 
-**What is the difference between Run it yourself, Cyoda Cloud, and Enterprise Cyoda?**
-Run it yourself: install the open-source binary and run Cyoda on your own machine or infrastructure. Free, Apache 2.0, no account required. Cyoda Cloud (ai.cyoda.net): hosted Cyoda, no local installation required. Enterprise Cyoda (cyoda.com): larger-scale deployment with enterprise support, SLA, and dedicated engagement.
+**What is the difference between Run it yourself and Enterprise Cyoda?**
+Run it yourself is the open-source path: install the Apache 2.0 binary and run Cyoda on your own infrastructure at no cost, with no account required. Enterprise Cyoda (cyoda.com) adds SLA-backed support and dedicated engagement for teams running at production scale. Both use the identical core API and entity model, so code written against one runs unchanged against the other.
 
 **What languages are supported?**
-Java, Python, Go, and Kotlin via gRPC client libraries. Any language with a gRPC implementation can connect to the Cyoda API directly.
+Any language with an HTTP client can use the REST API for entities, search, and workflow operations. External compute processors connect over gRPC. Java and Python client example/template projects are available to get started quickly.
 
 **Where is the GitHub repo?**
-https://github.com/Cyoda-platform/cyoda-go
+https://github.com/Cyoda/cyoda-go
 
 **Where is the documentation?**
 Full documentation is at docs.cyoda.net. The install-and-first-entity guide covers installation, local startup, importing an entity workflow, creating an entity, invoking a lifecycle transition, and reading state back.
 
 ## Links
 
-- GitHub: https://github.com/Cyoda-platform/cyoda-go
-- Releases: https://github.com/Cyoda-platform/cyoda-go/releases
+- GitHub: https://github.com/Cyoda/cyoda-go
+- Releases: https://github.com/Cyoda/cyoda-go/releases
 - Documentation: https://docs.cyoda.net
 - Install and First Entity: https://docs.cyoda.net/getting-started/install-and-first-entity/
-- Cyoda Cloud: https://ai.cyoda.net/
+- Developer Console: https://cyoda.dev/dev-console
 - Enterprise Cyoda: https://cyoda.com
 
 ## License

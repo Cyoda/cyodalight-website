@@ -1,11 +1,7 @@
 /**
  * Site-wide configuration.
- * TODO: Resolve all PLACEHOLDER values before launch.
  * See: docs/cyodalight-website-spec-final.md — Section 26 Pre-Build Checklist
  */
-
-// TODO: Confirm domain — options: cyodalight.io / light.cyoda.com / cyoda.com/light
-export const DOMAIN_PLACEHOLDER = 'DOMAIN_PLACEHOLDER';
 
 // Injected at build time via CYODALIGHT_VERSION environment variable.
 // Falls back to placeholder if not set.
@@ -15,21 +11,20 @@ export const version =
 export const site = {
   name: 'Cyoda',
   tagline: 'The open-source EDBMS and workflow runtime.',
-  url: `https://${DOMAIN_PLACEHOLDER}`, // TODO: update with confirmed domain
+  url: 'https://cyoda.dev',
   description:
-    'Cyoda is an open-source entity database management system (EDBMS) and workflow runtime. Define entity types, enforce lifecycle transitions, and query temporal history. Single binary. Java, Python, Go, and Kotlin via gRPC.',
+    'Cyoda is an open-source entity database management system (EDBMS) and workflow runtime. Define entity types, enforce lifecycle transitions, and query temporal history. Single binary. REST API; gRPC for external compute processors.',
 
   // External links — all confirmed in spec
-  github: 'https://github.com/Cyoda-platform/cyoda-go',
-  skillsRepo: 'https://github.com/Cyoda-platform/cyoda-skills',
-  githubReleases: 'https://github.com/Cyoda-platform/cyoda-go/releases',
+  github: 'https://github.com/Cyoda/cyoda-go',
+  skillsRepo: 'https://github.com/Cyoda/cyoda-skills',
+  githubReleases: 'https://github.com/Cyoda/cyoda-go/releases',
   docs: 'https://docs.cyoda.net',
   docsQuickstart: 'https://docs.cyoda.net/getting-started/install-and-first-entity/',
   docsApi: 'https://docs.cyoda.net/reference/api/',
   docsEntities: 'https://docs.cyoda.net/concepts/entities-and-lifecycle/',
   docsConfig: 'https://docs.cyoda.net/reference/configuration/',
   docsExamples: 'https://docs.cyoda.net/build/working-with-entities/',
-  cyodaCloud: 'https://ai.cyoda.net/',
   cyoda: 'https://cyoda.com',
 
   // Open Graph

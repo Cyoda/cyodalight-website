@@ -16,9 +16,24 @@ interface Props {
   language: string;
   label?: string; // optional filename or context label
   id?: string;    // used by tab panel aria-labelledby
+  analyticsEvent?: string;
+  analyticsSource?: string;
+  analyticsVersion?: string;
+  analyticsPlatform?: string;
+  analyticsAsset?: string;
 }
 
-const { code, language, label, id } = Astro.props;
+const {
+  code,
+  language,
+  label,
+  id,
+  analyticsEvent,
+  analyticsSource,
+  analyticsVersion,
+  analyticsPlatform,
+  analyticsAsset,
+} = Astro.props;
 
 // Shiki theme — custom matching spec colour palette
 // We override specific token colours via CSS variables in main.css
@@ -41,6 +56,11 @@ const SHIKI_THEME = 'github-light';
       class="code-block__copy"
       aria-label="Copy code to clipboard"
       data-copy-source={code}
+      data-analytics-event={analyticsEvent}
+      data-analytics-source={analyticsSource}
+      data-analytics-version={analyticsVersion}
+      data-analytics-platform={analyticsPlatform}
+      data-analytics-asset={analyticsAsset}
       type="button"
     >
       Copy

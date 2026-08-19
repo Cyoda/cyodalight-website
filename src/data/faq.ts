@@ -46,19 +46,19 @@ export const faqItems: FaqItem[] = [
       'SQLite-backed local storage is the default for a fresh local install. In-memory mode stores entity state in process memory and resets when the process stops, which is useful for fast functional tests. PostgreSQL stores entity state durably for service deployments that need an external database.',
   },
   {
-    question: 'What is the difference between Run it yourself, Cyoda Cloud, and Enterprise Cyoda?',
+    question: 'What is the difference between Run it yourself and Enterprise Cyoda?',
     answer:
-      'Run it yourself: install the open-source binary and run Cyoda on your own machine or infrastructure. Free, Apache 2.0, no account required. Cyoda Cloud: the hosted SaaS option at ai.cyoda.net — managed infrastructure, no installation required. Enterprise Cyoda: larger-scale deployment with enterprise support, SLA, and dedicated engagement for organisations with advanced operational requirements. All three options share the same core API and entity model.',
+      'Run it yourself is the open-source path: install the Apache 2.0 binary and run Cyoda on your own infrastructure at no cost, with no account required. Enterprise Cyoda adds SLA-backed support and dedicated engagement for teams running at production scale. Both use the identical core API and entity model, so code written against one runs unchanged against the other.',
   },
   {
     question: 'What languages are supported?',
     answer:
-      'Java, Python, Go, and Kotlin via gRPC client libraries. Any language with a gRPC implementation can connect to the Cyoda API directly.',
+      'Any language with an HTTP client can use the REST API for entities, search, and workflow operations. External compute processors connect over gRPC. Java and Python client example/template projects are available to get started quickly.',
   },
   {
     question: 'Where is the GitHub repo?',
     answer:
-      'The source code is at github.com/Cyoda-platform/cyoda-go. Issues, releases, and contributions are managed there.',
+      'The source code is at github.com/Cyoda/cyoda-go. Issues, releases, and contributions are managed there.',
   },
   {
     question: 'Where is the documentation?',

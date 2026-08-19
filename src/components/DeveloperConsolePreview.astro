@@ -1,0 +1,70 @@
+---
+import Badge from './Badge.astro';
+import DeveloperConsoleMedia from './DeveloperConsoleMedia.astro';
+import { developerConsoleRelease } from '../data/developerConsole';
+---
+
+<section
+  class="section dev-console-preview"
+  id="developer-console-preview"
+  aria-labelledby="developer-console-preview-heading"
+  data-analytics-event="dev_console_home_section_view"
+  data-analytics-source="homepage"
+  data-analytics-version="0.3.0"
+  data-analytics-platform="macos_linux"
+>
+  <div class="container">
+    <div class="dev-console-preview__inner">
+      <div class="dev-console-preview__copy">
+        <div class="dev-console-preview__badge">
+          <Badge label="Developer Console · v0.3.0" variant="accent" />
+        </div>
+
+        <h2 class="section-heading" id="developer-console-preview-heading">
+          Generate with AI. Refine the workflow visually.
+        </h2>
+
+        <p class="section-subheading">
+          Cyoda Developer Console is a desktop application for inspecting and
+          correcting generated workflow JSON during the build phase. Work with
+          local workflow files without a running Cyoda environment.
+        </p>
+
+        <p class="dev-console-preview__meta">
+          {developerConsoleRelease.version} · {developerConsoleRelease.status} · {developerConsoleRelease.platform}
+        </p>
+
+        <div class="hero__actions">
+          <a
+            href={developerConsoleRelease.pagePath}
+            class="btn btn--primary"
+            data-analytics-event="dev_console_home_view_page_click"
+            data-analytics-source="homepage"
+            data-analytics-version="0.3.0"
+            data-analytics-platform="macos_linux"
+          >
+            View Developer Console &rarr;
+          </a>
+          <a
+            href={developerConsoleRelease.releasesUrl}
+            class="btn btn--text"
+            aria-label="View Cyoda Developer Console v0.3.0 downloads"
+            data-analytics-event="dev_console_home_downloads_click"
+            data-analytics-source="homepage"
+            data-analytics-version="0.3.0"
+            data-analytics-platform="macos_linux"
+            data-analytics-asset="release"
+            >
+            Downloads
+          </a>
+        </div>
+      </div>
+
+      <DeveloperConsoleMedia
+        label="Developer Console media"
+        description="Treasury repo lifecycle: solid routes are automatic STP; dashed routes require a user action."
+        variant="compact"
+      />
+    </div>
+  </div>
+</section>

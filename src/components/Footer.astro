@@ -4,6 +4,7 @@
  * Spec reference: section 17, section 23.
  */
 import { site } from '../data/site';
+import { developerConsoleRelease } from '../data/developerConsole';
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -31,7 +32,7 @@ const base = import.meta.env.BASE_URL;
           <a href={site.docs}>docs.cyoda.net</a>
         </li>
         <li>
-          <a href={site.cyodaCloud}>Cyoda Cloud</a>
+          <a href={developerConsoleRelease.pagePath}>Developer Console</a>
         </li>
         <li>
           <a href={site.cyoda}>Enterprise Cyoda</a>

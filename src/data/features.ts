@@ -48,9 +48,9 @@ export const features: Feature[] = [
   },
   {
     iconId: 'icon-grpc',
-    title: 'gRPC API',
+    title: 'REST and gRPC APIs',
     description:
-      'Language-agnostic API with client libraries for Java, Python, Go, and Kotlin. One consistent API surface in development and production.',
+      'REST API for entities, search, and workflow operations — any language with an HTTP client works. gRPC connects external compute processors. Java and Python client templates get you started.',
   },
   {
     iconId: 'icon-ai',

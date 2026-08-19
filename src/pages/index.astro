@@ -6,15 +6,16 @@
  *   1. Header / nav        — in BaseLayout
  *   2. Hero                — HeroSection
  *   3. Proof bar           — ProofBar
- *   4. AI agent install    — AgentInstallTabs
- *   5. What it is          — WhatItIs
- *   6. Quick start         — QuickStart
- *   7. Key capabilities    — FeatureGrid
- *   8. Growth path         — GrowthPath
- *   9. Three ways to use   — ProgressionDiagram
- *  10. FAQ                 — FAQSection
- *  11. Final CTA           — FinalCTA
- *  12. Footer              — in BaseLayout
+ *   4. What it is          — WhatItIs
+ *   5. Key capabilities    — FeatureGrid
+ *   6. Get started         — QuickStart
+ *   7. AI agent install    — AgentInstallTabs
+ *   8. Developer Console   — DeveloperConsolePreview
+ *   9. Growth path         — GrowthPath
+ *  10. Two ways to use     — ProgressionDiagram
+ *  11. FAQ                 — FAQSection
+ *  12. Final CTA           — FinalCTA
+ *  13. Footer              — in BaseLayout
  *
  * This file contains only section composition and data plumbing.
  * No layout logic lives here.
@@ -22,10 +23,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ProofBar from '../components/ProofBar.astro';
-import AgentInstallTabs from '../components/AgentInstallTabs.astro';
 import WhatItIs from '../components/WhatItIs.astro';
-import QuickStart from '../components/QuickStart.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
+import QuickStart from '../components/QuickStart.astro';
+import AgentInstallTabs from '../components/AgentInstallTabs.astro';
+import DeveloperConsolePreview from '../components/DeveloperConsolePreview.astro';
 import GrowthPath from '../components/GrowthPath.astro';
 import ProgressionDiagram from '../components/ProgressionDiagram.astro';
 import FAQSection from '../components/FAQSection.astro';
@@ -41,18 +43,12 @@ import { features } from '../data/features';
   <!-- 3. Proof bar -->
   <ProofBar />
 
-  <!-- 4. AI coding agent install paths -->
-  <AgentInstallTabs />
-
-  <!-- 5. What it is -->
+  <!-- 4. What it is -->
   <WhatItIs />
 
-  <!-- 6. Install and get started -->
-  <QuickStart />
-
-  <!-- 7. Key capabilities -->
+  <!-- 5. Key capabilities -->
   <section
-    class="section"
+    class="section section--alt"
     id="capabilities"
     aria-labelledby="capabilities-heading"
   >
@@ -62,15 +58,24 @@ import { features } from '../data/features';
     </div>
   </section>
 
-  <!-- 8. Growth path — runtime mode progression -->
+  <!-- 6. Get started -->
+  <QuickStart />
+
+  <!-- 7. AI coding agent install paths -->
+  <AgentInstallTabs />
+
+  <!-- 8. Developer Console preview -->
+  <DeveloperConsolePreview />
+
+  <!-- 9. Growth path — runtime mode progression -->
   <GrowthPath />
 
-  <!-- 9. Three ways to use Cyoda -->
+  <!-- 10. Two ways to use Cyoda -->
   <ProgressionDiagram />
 
-  <!-- 10. FAQ -->
+  <!-- 11. FAQ -->
   <FAQSection />
 
-  <!-- 11. Final CTA -->
+  <!-- 12. Final CTA -->
   <FinalCTA />
 </BaseLayout>

@@ -3,13 +3,13 @@
  * QuickStart — compact local onramp that links to canonical docs for detail.
  */
 import CodeBlock from './CodeBlock.astro';
-import HelloWorldWorkflowViewer from './HelloWorldWorkflowViewer';
+import OrdersWorkflowViewer from './OrdersWorkflowViewer';
 import { site } from '../data/site';
 import { firstEntityCommands } from '../data/install';
 ---
 
 <section
-  class="section section--alt"
+  class="section"
   id="install-get-started"
   aria-labelledby="quickstart-heading"
 >
@@ -24,30 +24,9 @@ import { firstEntityCommands } from '../data/install';
           The shortest useful path: install the binary, start the local server,
           import the lifecycle workflow for an entity model, create an entity
           instance, move it through a valid transition, and read the state back.
-          The graph shows the HelloWorld entity workflow: the states,
-          transitions, criteria, and processors attached to that entity.
+          The graph shows the orders entity workflow used in the commands below:
+          the draft and submitted states and the manual submit transition.
         </p>
-
-        <ol class="quickstart__steps">
-          <li>
-            <strong>Install:</strong>
-            <code>brew install cyoda-platform/cyoda-go/cyoda</code>
-          </li>
-          <li>
-            <strong>Run:</strong>
-            <code>cyoda</code>
-            starts the local server on <code>localhost:8080</code>.
-          </li>
-          <li>
-            <strong>Authenticate locally:</strong>
-            mock auth is the default, so no bearer token is required.
-          </li>
-          <li>
-            <strong>Keep going:</strong>
-            use the docs for entity schemas, workflow processors, criteria,
-            deployment options, and API reference.
-          </li>
-        </ol>
 
         <a
           href={site.docsQuickstart}
@@ -62,20 +41,20 @@ import { firstEntityCommands } from '../data/install';
 
       <div
         class="workflow-artifact"
-        aria-label="HelloWorld entity workflow editor"
+        aria-label="orders entity workflow display"
       >
         <div class="workflow-artifact__header">
           <div>
             <p class="workflow-artifact__eyebrow">Entity workflow</p>
-            <h3 class="workflow-artifact__title">HelloWorld</h3>
+            <h3 class="workflow-artifact__title">orders</h3>
             <p class="workflow-artifact__subtitle">
-              Lifecycle for the HelloWorld example entity
+              Lifecycle for the orders example entity used below
             </p>
           </div>
-          <span class="workflow-artifact__badge">Editable</span>
+          <span class="workflow-artifact__badge">Display</span>
         </div>
         <div class="workflow-artifact__canvas">
-          <HelloWorldWorkflowViewer client:only="react" />
+          <OrdersWorkflowViewer client:only="react" />
         </div>
       </div>
 

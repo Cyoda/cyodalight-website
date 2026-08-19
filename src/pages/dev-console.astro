@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/Badge.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import DeveloperConsoleMedia from '../components/DeveloperConsoleMedia.astro';
+import { site } from '../data/site';
+import { developerConsoleRelease } from '../data/developerConsole';
+
+const title = 'Cyoda Developer Console | Local Workflow Editing';
+const description =
+  'Inspect and correct generated Cyoda workflow JSON locally with Cyoda Developer Console v0.3.0.';
+const ogDescription =
+  'Inspect and correct generated Cyoda workflow JSON locally, without a running Cyoda environment.';
+const ogImage = `${site.url}${site.ogImage}`;
+
+const modelEditorMcpConfig = `{
+  "mcpServers": {
+    "model-editor": {
+      "command": "npx",
+      "args": ["-y", "@cyoda/model-editor-mcp@0.2.1", "--project", "."]
+    }
+  }
+}`;
+
+const softwareAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: developerConsoleRelease.name,
+  softwareVersion: developerConsoleRelease.version,
+  operatingSystem: 'macOS and Linux; Windows build from source',
+  applicationCategory: 'DeveloperApplication',
+  downloadUrl: developerConsoleRelease.releasesUrl,
+  codeRepository: developerConsoleRelease.repositoryUrl,
+  url: developerConsoleRelease.canonicalUrl,
+  author: {
+    '@type': 'Organization',
+    name: site.copyrightHolder,
+    url: site.cyoda,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={developerConsoleRelease.canonicalUrl}
+  ogTitle="Cyoda Developer Console v0.3.0"
+  ogDescription={ogDescription}
+  ogImage={ogImage}
+  ogImageWidth={site.ogImageWidth}
+  ogImageHeight={site.ogImageHeight}
+  twitterDescription={ogDescription}
+  structuredData={[softwareAppSchema]}
+>
+  <section
+    class="dev-console-page-hero"
+    aria-labelledby="dev-console-heading"
+    data-analytics-event="dev_console_page_view"
+    data-analytics-source="dev_console_page"
+    data-analytics-version="0.3.0"
+    data-analytics-platform="macos_linux"
+  >
+    <div class="container">
+      <div class="dev-console-page-hero__inner">
+        <div class="dev-console-page-hero__copy">
+          <Badge label="Cyoda Developer Console · v0.3.0" variant="accent" />
+
+          <h1 class="hero__headline" id="dev-console-heading">
+            Inspect and refine Cyoda workflows visually.
+          </h1>
+
+          <p class="hero__subhead">
+            A desktop application for inspecting and correcting generated
+            workflow JSON during the build phase. Work with local workflow files
+            without a running Cyoda environment.
+          </p>
+
+          <div class="hero__actions">
+            <a
+              href="#install-developer-console"
+              class="btn btn--primary"
+            >
+              Install with Homebrew &rarr;
+            </a>
+            <a
+              href={developerConsoleRelease.releasesUrl}
+              class="btn btn--text"
+              aria-label="View Cyoda Developer Console v0.3.0 downloads"
+              data-analytics-event="dev_console_downloads_click"
+              data-analytics-source="dev_console_page"
+              data-analytics-version="0.3.0"
+              data-analytics-platform="macos_linux"
+              data-analytics-asset="release"
+            >
+              View downloads
+            </a>
+          </div>
+
+          <a
+            href={developerConsoleRelease.releasesUrl}
+            class="quickstart__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="dev_console_github_release_click"
+            data-analytics-source="dev_console_page"
+            data-analytics-version="0.3.0"
+            data-analytics-platform="macos_linux"
+            data-analytics-asset="github_release"
+          >
+            &rarr; View release on GitHub
+          </a>
+
+          <p class="dev-console-page-hero__support">
+            Available on macOS (Apple Silicon and Intel) and Linux (ARM64 and
+            x86_64). Windows can be built from source.
+          </p>
+        </div>
+
+        <DeveloperConsoleMedia
+          label="Example workflow display"
+          description="Read-only treasury repo lifecycle with automatic STP and manual approval paths."
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="dev-console-loop-heading">
+    <div class="container">
+      <div class="dev-console-section-header">
+        <h2 class="section-heading" id="dev-console-loop-heading">
+          Local workflow files, visual editing, and runtime execution.
+        </h2>
+        <p class="section-subheading">
+          Use the console to inspect and correct generated workflow JSON locally.
+          A running Cyoda environment is not required.
+        </p>
+      </div>
+
+      <ol class="dev-console-flow" aria-label="Cyoda workflow model lifecycle">
+        <li>Generated workflow JSON</li>
+        <li>Local project files</li>
+        <li>Developer Console</li>
+        <li>Cyoda runtime when you choose to run it</li>
+      </ol>
+    </div>
+  </section>
+
+  <section
+    class="section section--alt"
+    id="model-editor-mcp"
+    aria-labelledby="model-editor-mcp-heading"
+  >
+    <div class="container">
+      <div class="dev-console-section-header">
+        <h2 class="section-heading" id="model-editor-mcp-heading">
+          Model Editor MCP for AI CLIs
+        </h2>
+        <p class="section-subheading">
+          Give your AI coding agent direct, project-scoped access to Cyoda entity and workflow models. No clone or build required.
+        </p>
+      </div>
+
+      <div class="dev-console-mcp">
+        <p class="dev-console-mcp__setup">
+          Add this to <code>.mcp.json</code> at your project root, then reconnect
+          your MCP-capable CLI. Requires Node.js 22 or newer.
+        </p>
+        <CodeBlock
+          code={modelEditorMcpConfig}
+          language="json"
+          label=".mcp.json"
+          analyticsEvent="model_editor_mcp_config_copy"
+          analyticsSource="dev_console_page"
+          analyticsAsset="mcp_config"
+        />
+        <p class="dev-console-mcp__usage">
+          Your CLI starts the server for the configured project. Ask it to show a
+          model or use <code>connection_info</code> to get the live editor's URL; the
+          agent owns model content, while people can browse and arrange the
+          canvas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="section section--alt"
+    id="install-developer-console"
+    aria-labelledby="dev-console-install-heading"
+  >
+    <div class="container">
+      <div class="dev-console-install">
+        <div class="dev-console-section-header">
+          <h2 class="section-heading" id="dev-console-install-heading">
+            Install Developer Console
+          </h2>
+          <p class="section-subheading">
+            Cyoda Developer Console works with local workflow files and does not
+            require a running Cyoda environment.
+          </p>
+        </div>
+
+        <div class="dev-console-install__steps">
+          <article class="dev-console-install__step">
+            <p class="dev-console-install__label">macOS</p>
+            <h3>Install with Homebrew</h3>
+            <CodeBlock
+              code={developerConsoleRelease.brewCommand}
+              language="bash"
+              label="cyoda-dev-console.sh"
+              analyticsEvent="dev_console_brew_copy"
+              analyticsSource="dev_console_page"
+              analyticsVersion="0.3.0"
+              analyticsPlatform="macos"
+              analyticsAsset="brew"
+            />
+            <p class="dev-console-install__note">
+              Supports Apple Silicon and Intel Macs.
+            </p>
+            <p class="dev-console-install__note">
+              Prefer a direct download? Choose a DMG:
+            </p>
+            <a
+              href={developerConsoleRelease.appleSiliconDmgUrl}
+              class="quickstart__link"
+              aria-label="Download Cyoda Developer Console v0.3.0 DMG for Apple Silicon"
+            >
+              &rarr; Apple Silicon DMG
+            </a>
+            <a
+              href={developerConsoleRelease.intelDmgUrl}
+              class="quickstart__link"
+              aria-label="Download Cyoda Developer Console v0.3.0 DMG for Intel Macs"
+            >
+              &rarr; Intel Mac DMG
+            </a>
+          </article>
+
+          <article class="dev-console-install__step">
+            <p class="dev-console-install__label">Linux</p>
+            <h3>Download an AppImage</h3>
+            <p class="dev-console-install__note">
+              Choose the package for your CPU architecture, then mark it
+              executable and run it.
+            </p>
+            <a
+              href={developerConsoleRelease.linuxArm64AppImageUrl}
+              class="quickstart__link"
+              aria-label="Download Cyoda Developer Console v0.3.0 AppImage for Linux ARM64"
+            >
+              &rarr; Linux ARM64 AppImage
+            </a>
+            <a
+              href={developerConsoleRelease.linuxX64AppImageUrl}
+              class="quickstart__link"
+              aria-label="Download Cyoda Developer Console v0.3.0 AppImage for Linux x86_64"
+            >
+              &rarr; Linux x86_64 AppImage
+            </a>
+          </article>
+
+          <article class="dev-console-install__step">
+            <p class="dev-console-install__label">Windows</p>
+            <h3>Build from source</h3>
+            <p>
+              No prebuilt Windows binary is published. Follow the documented
+              source-build instructions.
+            </p>
+            <a
+              href={developerConsoleRelease.windowsBuildUrl}
+              class="quickstart__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Read Windows source-build instructions for Cyoda Developer Console"
+              data-analytics-event="dev_console_windows_build_click"
+              data-analytics-source="dev_console_page"
+              data-analytics-version="0.3.0"
+              data-analytics-platform="windows"
+              data-analytics-asset="source_build"
+            >
+              &rarr; Windows build instructions
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="dev-console-open-source-heading">
+    <div class="container">
+      <div class="dev-console-open-source">
+        <div>
+          <h2 class="section-heading" id="dev-console-open-source-heading">
+            Open source
+          </h2>
+          <p class="section-subheading">
+            Inspect the source, review the current release, report issues, and
+            follow development on GitHub.
+          </p>
+        </div>
+
+        <div class="dev-console-open-source__links">
+          <a
+            href={developerConsoleRelease.repositoryUrl}
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="dev_console_repo_click"
+            data-analytics-source="dev_console_page"
+            data-analytics-version="0.3.0"
+            data-analytics-platform="macos_linux"
+          >
+            View repository &rarr;
+          </a>
+          <a
+            href={developerConsoleRelease.releasesUrl}
+            class="btn btn--text"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="dev_console_github_release_click"
+            data-analytics-source="dev_console_page"
+            data-analytics-version="0.3.0"
+            data-analytics-platform="macos_linux"
+            data-analytics-asset="github_release"
+          >
+            View v0.3.0 release
+          </a>
+          <a
+            href={developerConsoleRelease.issuesUrl}
+            class="btn btn--text"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="dev-console-cta-heading">
+    <div class="container">
+      <div class="final-cta">
+        <h2 class="section-heading" id="dev-console-cta-heading">
+          Work with workflow files locally.
+        </h2>
+        <p class="section-subheading">
+          Install the Developer Console to inspect and correct generated workflow
+          JSON during the build phase—no running Cyoda environment required.
+        </p>
+        <div class="final-cta__actions">
+          <a
+            href={site.docsQuickstart}
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore Cyoda &rarr;
+          </a>
+          <a href="#install-developer-console" class="btn btn--text">
+            Install Developer Console
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
