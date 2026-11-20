@@ -24,7 +24,7 @@ export const agentInstallTabs: AgentInstallTab[] = [
       {
         label: "Run inside Claude Code",
         language: "text",
-        code: `/plugin marketplace add Cyoda-platform/cyoda-skills
+        code: `/plugin marketplace add Cyoda/cyoda-skills
 /plugin install cyoda@cyoda
 /reload-plugins`,
       },
