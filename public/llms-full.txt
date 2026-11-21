@@ -134,7 +134,7 @@ Cyoda ships agent skills that help AI coding tools generate Cyoda applications u
 
 **Claude Code** (best supported): install the plugin from the Cyoda skills marketplace, then start building.
 ```
-/plugin marketplace add Cyoda-platform/cyoda-skills
+/plugin marketplace add Cyoda/cyoda-skills
 /plugin install cyoda@cyoda
 /reload-plugins
 ```
